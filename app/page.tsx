@@ -15,7 +15,7 @@ export default function Home() {
             {/* Location Badge */}
             <div className="flex items-center gap-2 text-muted-foreground mb-12">
               <Globe className="w-5 h-5" />
-              <span className="text-sm md:text-base">San Francisco</span>
+              <span className="text-sm md:text-base">Global</span>
             </div>
 
             {/* Hero Section */}
