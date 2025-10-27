@@ -34,8 +34,8 @@ export default function Home() {
                 >
                   Xend
                 </a>
-                , a revolutionary platform that plugs stablecoin payments into
-                the internet.
+                , a revolutionary platform suite that plugs stablecoin payments
+                into the internet.
               </p>
             </div>
 
