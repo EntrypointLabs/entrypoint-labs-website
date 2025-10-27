@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { Github, Mail } from "lucide-react"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { Button } from "@/components/ui/button"
+import { Github, Mail } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { Button } from "@/components/ui/button";
 
 export function Header() {
   return (
@@ -19,7 +19,12 @@ export function Header() {
         {/* Actions */}
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="icon" asChild>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <a
+              href="https://github.com/EntrypointLabs"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            >
               <Github className="w-5 h-5" />
             </a>
           </Button>
@@ -32,5 +37,5 @@ export function Header() {
         </div>
       </div>
     </header>
-  )
+  );
 }

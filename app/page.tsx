@@ -15,7 +15,7 @@ export default function Home() {
             {/* Location Badge */}
             <div className="flex items-center gap-2 text-muted-foreground mb-12">
               <Globe className="w-5 h-5" />
-              <span className="text-sm md:text-base">Global</span>
+              <span className="text-sm md:text-base">Worldwide</span>
             </div>
 
             {/* Hero Section */}
@@ -26,9 +26,16 @@ export default function Home() {
             <div className="space-y-6 text-lg md:text-xl text-muted-foreground mb-16">
               <p>
                 We are currently building{" "}
-                <span className="text-foreground font-semibold">Xend</span>, a
-                revolutionary platform that plugs stablecoin payments into the
-                internet.
+                <a
+                  href="https://xend.global"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground font-semibold hover:underline"
+                >
+                  Xend
+                </a>
+                , a revolutionary platform that plugs stablecoin payments into
+                the internet.
               </p>
             </div>
 
