@@ -1,6 +1,6 @@
-import { Header } from "@/components/header"
-import { AnimatedBackground } from "@/components/animated-background"
-import { Globe } from "lucide-react"
+import { Header } from "@/components/header";
+import { AnimatedBackground } from "@/components/animated-background";
+import { Globe } from "lucide-react";
 
 export default function Home() {
   return (
@@ -25,23 +25,37 @@ export default function Home() {
 
             <div className="space-y-6 text-lg md:text-xl text-muted-foreground mb-16">
               <p>
-                We are currently building <span className="text-foreground font-semibold">Portal</span>, a revolutionary
-                platform for deploying decentralized applications with zero configuration.
+                We are currently building{" "}
+                <span className="text-foreground font-semibold">Xend</span>, a
+                revolutionary platform that plugs stablecoin payments into the
+                internet.
               </p>
             </div>
 
             {/* Backed By Section */}
             <div className="space-y-2">
-              <h2 className="text-lg md:text-xl font-semibold">Backed and Supported by</h2>
+              <h2 className="text-lg md:text-xl font-semibold">
+                Backed and Supported by
+              </h2>
 
               <div className="flex items-center gap-3">
-                <a href="https://nickels.vc" target="_blank" className="flex items-center gap-2 group">
+                <a
+                  href="https://nickels.vc"
+                  target="_blank"
+                  className="flex items-center gap-2 group"
+                >
                   <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                    <span className="text-primary-foreground font-bold text-lg">N</span>
+                    <span className="text-primary-foreground font-bold text-lg">
+                      N
+                    </span>
                   </div>
                   <div>
-                    <div  className="font-semibold text-lg group-hover:underline">Nickels.vc</div>
-                    <div className="text-sm text-muted-foreground">Venture Fund</div>
+                    <div className="font-semibold text-lg group-hover:underline">
+                      Nickels.vc
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Venture Fund
+                    </div>
                   </div>
                 </a>
               </div>
@@ -51,9 +65,11 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="container mx-auto px-4 py-8 mt-auto">
-          <p className="text-sm text-muted-foreground">© 2025 Entrypoint Labs. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground">
+            © 2025 Entrypoint Labs. All rights reserved.
+          </p>
         </footer>
       </div>
     </div>
-  )
+  );
 }
