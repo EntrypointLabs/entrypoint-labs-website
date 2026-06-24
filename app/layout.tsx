@@ -7,9 +7,9 @@ import { Suspense } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Entrypoint Labs - Cutting-Edge Research Company",
+  title: "Squads | Finance Without Legacy Constraints",
   description:
-    "Building Xend, a revolutionary platform that plugs stablecoin payments into the internet.",
+    "Squads builds on open infrastructure, global money and internet capital markets to deliver better financial services to every business, individual and developer.",
   generator: "v0.app",
 };
 
@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body
         className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}
       >
