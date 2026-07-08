@@ -5,7 +5,7 @@ import { Logomark } from "@/components/squads/brand";
 const H1_LINES = ["Products and rails", "for the open dollar", "economy"];
 
 const PARAGRAPH =
-  "We build on open networks, programmable money and modern capital rails to bring better financial services to every team, founder and builder.";
+  "We build on open networks, programmable money and modern capital rails to bring better financial services to every team and builder.";
 
 function Headline({
   breakLines,
@@ -93,13 +93,21 @@ function TrendLine() {
         d="M0,88 L28,74 L52,90 L78,58 L104,76 L132,48 L160,66 L188,42 L214,58 L242,24 L268,40 L296,14 L322,30 L350,10 L400,2"
         fill="none"
         stroke="#34D399"
-        strokeWidth={2}
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
       />
     </svg>
   );
 }
+
+const TABLE_ROWS: [string, string][] = [
+  ["$120,400.00", "+$8,210.00"],
+  ["$64,150.00", "-$2,940.00"],
+  ["$310,875.00", "+$12,480.00"],
+  ["$45,020.00", "+$1,150.00"],
+  ["$96,300.00", "-$4,760.00"],
+];
 
 function LaptopArt() {
   return (
@@ -121,8 +129,8 @@ function LaptopArt() {
           aspectRatio: "1.62",
           borderRadius: "6px 10px 4px 4px",
           background:
-            "linear-gradient(155deg,#1d1e22 0%,#0a0a0c 65%,#050506 100%)",
-          border: "1px solid rgba(255,255,255,0.07)",
+            "linear-gradient(160deg,#101114 0%,#0c0d10 45%,#08090b 100%)",
+          border: "1px solid rgba(255,255,255,0.06)",
           boxShadow: "0 60px 100px -30px rgba(0,0,0,0.75)",
           clipPath: "polygon(4% 3%, 100% 0%, 100% 100%, 0% 97%)",
           overflow: "hidden",
@@ -131,34 +139,33 @@ function LaptopArt() {
       >
         <div
           style={{
-            width: "24%",
-            borderRight: "1px solid rgba(255,255,255,0.06)",
-            padding: "11% 8%",
+            width: "7%",
+            borderRight: "1px solid rgba(255,255,255,0.05)",
+            padding: "3.5% 0",
             display: "flex",
             flexDirection: "column",
+            alignItems: "center",
+            gap: 14,
           }}
         >
-          <Logomark size={14} style={{ color: "rgba(255,255,255,0.5)" }} />
-          <div
-            style={{
-              marginTop: 12,
-              display: "flex",
-              flexDirection: "column",
-              gap: 9,
-            }}
-          >
-            <Bar w="70%" o={0.32} />
-            <Bar w="55%" />
-            <Bar w="60%" />
-            <Bar w="45%" />
-            <Bar w="58%" />
-          </div>
+          <Logomark size={12} style={{ color: "rgba(255,255,255,0.45)" }} />
+          {Array.from({ length: 6 }).map((_, i) => (
+            <span
+              key={i}
+              style={{
+                width: 9,
+                height: 9,
+                borderRadius: 2.5,
+                background: "rgba(255,255,255,0.12)",
+              }}
+            />
+          ))}
         </div>
 
         <div
           style={{
             flex: 1,
-            padding: "8% 6% 6%",
+            padding: "3.5% 4% 3%",
             position: "relative",
             display: "flex",
             flexDirection: "column",
@@ -167,70 +174,93 @@ function LaptopArt() {
           <div
             style={{
               display: "flex",
-              alignItems: "flex-start",
+              alignItems: "center",
               justifyContent: "space-between",
             }}
           >
-            <Amount
-              int="$818,240"
-              dec="00"
-              style={{
-                color: "rgba(255,255,255,0.92)",
-                fontSize: 22,
-                fontWeight: 600,
-                letterSpacing: "-0.02em",
-              }}
-            />
+            <Bar w={56} h={6} o={0.3} />
             <div style={{ display: "flex", gap: 6 }}>
               <span
                 style={{
-                  width: 34,
-                  height: 13,
+                  width: 32,
+                  height: 12,
                   borderRadius: 999,
-                  background: "rgba(255,255,255,0.9)",
+                  background: "rgba(255,255,255,0.85)",
                 }}
               />
               <span
                 style={{
-                  width: 44,
-                  height: 13,
+                  width: 40,
+                  height: 12,
                   borderRadius: 999,
-                  background: "rgba(255,255,255,0.12)",
+                  background: "rgba(255,255,255,0.1)",
                 }}
               />
             </div>
           </div>
 
+          <Amount
+            int="$818,240"
+            dec="00"
+            style={{
+              marginTop: "3.5%",
+              color: "#F4F4F5",
+              fontSize: 21,
+              fontWeight: 600,
+              letterSpacing: "-0.02em",
+            }}
+          />
           <span
             style={{
-              marginTop: 5,
-              fontSize: 10,
-              color: "#34D399",
+              marginTop: 4,
+              fontSize: 9,
+              color: "rgba(52,211,153,0.8)",
               fontWeight: 500,
             }}
           >
             +$46,120.75
           </span>
 
-          <div style={{ position: "relative", flex: 1, marginTop: "6%" }}>
+          <div
+            style={{
+              position: "relative",
+              flex: 1,
+              minHeight: 0,
+              marginTop: "3%",
+            }}
+          >
             <TrendLine />
           </div>
 
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 8,
-              marginTop: "6%",
-            }}
-          >
-            {[18, 22, 26, 20].map((v, i) => (
+          <div style={{ marginTop: "3.5%" }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                paddingBottom: 7,
+              }}
+            >
+              <Bar w="12%" h={5} o={0.14} />
+              <Bar w="10%" h={5} o={0.14} />
+              <Bar w="10%" h={5} o={0.14} />
+            </div>
+            {TABLE_ROWS.map(([balance, delta], i) => (
               <div
                 key={i}
-                style={{ display: "flex", justifyContent: "space-between" }}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  borderTop: "1px solid rgba(255,255,255,0.05)",
+                  paddingTop: 6,
+                  paddingBottom: 6,
+                  fontSize: 9.5,
+                  color: "rgba(255,255,255,0.34)",
+                }}
               >
-                <Bar w={`${v}%`} o={0.22} />
-                <Bar w="14%" o={0.34} />
+                <Bar w="15%" h={6} o={0.2} />
+                <span>{balance}</span>
+                <span>{delta}</span>
               </div>
             ))}
           </div>
@@ -267,17 +297,17 @@ function PhoneArt() {
     <div
       style={{
         position: "absolute",
-        left: "40%",
-        top: "29%",
-        width: "23%",
-        aspectRatio: "0.82",
+        left: "25.4%",
+        top: "34.5%",
+        width: "10.7%",
+        aspectRatio: "0.42",
         zIndex: 30,
-        transform: "rotate(-7deg)",
-        borderRadius: 34,
-        background: "linear-gradient(160deg,#e9e9ec,#c7c7cd)",
+        transform: "rotate(-6deg)",
+        borderRadius: 20,
+        background: "linear-gradient(160deg,#ececef,#c9c9cf)",
         border: "1px solid rgba(255,255,255,0.5)",
-        boxShadow: "0 50px 90px -25px rgba(0,0,0,0.7)",
-        padding: 8,
+        boxShadow: "0 40px 70px -20px rgba(0,0,0,0.7)",
+        padding: 4,
       }}
     >
       <div
@@ -285,10 +315,10 @@ function PhoneArt() {
           position: "relative",
           width: "100%",
           height: "100%",
-          borderRadius: 26,
-          background: "linear-gradient(180deg,#fbfbfc,#e7e7ea)",
+          borderRadius: 16,
+          background: "linear-gradient(180deg,#fbfbfc,#e9e9ec)",
           overflow: "hidden",
-          padding: "13% 10% 10%",
+          padding: "26% 11% 14%",
           display: "flex",
           flexDirection: "column",
         }}
@@ -296,13 +326,13 @@ function PhoneArt() {
         <span
           style={{
             position: "absolute",
-            top: 10,
+            top: 6,
             left: "50%",
             transform: "translateX(-50%)",
-            width: "32%",
-            height: 10,
+            width: "36%",
+            height: 7,
             borderRadius: 999,
-            background: "#1c1c1e",
+            background: "#17171a",
           }}
         />
 
@@ -310,58 +340,69 @@ function PhoneArt() {
           int="$19,254"
           dec="00"
           style={{
-            marginTop: "16%",
-            fontSize: 17,
+            fontSize: 13,
             fontWeight: 600,
             color: "#18181b",
             letterSpacing: "-0.02em",
           }}
         />
         <Bar
-          w="30%"
-          h={5}
-          style={{ marginTop: 8, background: "rgba(0,0,0,0.12)" }}
+          w="50%"
+          h={3}
+          style={{ marginTop: 5, background: "rgba(0,0,0,0.12)" }}
         />
 
         <div
           style={{
-            marginTop: "14%",
+            marginTop: "16%",
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            rowGap: "10%",
-            columnGap: "8%",
+            rowGap: 9,
+            columnGap: 6,
           }}
         >
           {tiles.map((tile) => (
             <div
               key={tile.value}
-              style={{ display: "flex", flexDirection: "column", gap: 6 }}
+              style={{ display: "flex", flexDirection: "column", gap: 3 }}
             >
               <span
                 style={{
-                  width: 20,
-                  height: 20,
-                  borderRadius: 7,
+                  width: 11,
+                  height: 11,
+                  borderRadius: 4,
                   background: tile.bg,
                 }}
               />
-              <span style={{ fontSize: 10, fontWeight: 600, color: "#3f3f46" }}>
+              <span style={{ fontSize: 7, fontWeight: 600, color: "#3f3f46" }}>
                 {tile.value}
               </span>
             </div>
           ))}
         </div>
 
+        <div
+          style={{
+            marginTop: 10,
+            display: "flex",
+            flexDirection: "column",
+            gap: 5,
+          }}
+        >
+          <Bar w="100%" h={8} style={{ background: "rgba(0,0,0,0.06)" }} />
+          <Bar w="100%" h={8} style={{ background: "rgba(0,0,0,0.06)" }} />
+        </div>
+
         <span
           style={{
             position: "absolute",
-            bottom: 10,
+            bottom: 4,
             left: "50%",
             transform: "translateX(-50%)",
-            width: 30,
-            height: 30,
-            borderRadius: "50%",
-            background: "#111114",
+            width: 18,
+            height: 3,
+            borderRadius: 999,
+            background: "rgba(0,0,0,0.45)",
           }}
         />
       </div>
@@ -374,29 +415,29 @@ function CardArt() {
     <div
       style={{
         position: "absolute",
-        left: "50%",
-        top: "55%",
-        width: "17%",
-        aspectRatio: "1.586",
-        zIndex: 20,
+        left: 439,
+        top: 487,
+        width: 128,
+        height: 81,
+        zIndex: 32,
         transform: "rotate(11deg)",
-        borderRadius: 14,
+        borderRadius: 10,
         overflow: "hidden",
         background:
           "repeating-linear-gradient(100deg, rgba(255,255,255,0.16) 0px, rgba(255,255,255,0.16) 1px, rgba(0,0,0,0.1) 1px, rgba(0,0,0,0.1) 3px), linear-gradient(155deg,#d4d4d8,#9a9aa2)",
         border: "1px solid rgba(255,255,255,0.35)",
-        boxShadow: "0 40px 70px -20px rgba(0,0,0,0.65)",
-        padding: "10% 9%",
+        boxShadow: "0 30px 50px -15px rgba(0,0,0,0.65)",
+        padding: "7px 10px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
       }}
     >
-      <Logomark size={16} style={{ color: "rgba(30,30,34,0.7)" }} />
+      <Logomark size={11} style={{ color: "rgba(30,30,34,0.7)" }} />
       <span
         style={{
-          fontSize: 10,
-          letterSpacing: "0.12em",
+          fontSize: 7,
+          letterSpacing: "0.1em",
           color: "rgba(30,30,34,0.55)",
         }}
       >
@@ -406,7 +447,7 @@ function CardArt() {
   );
 }
 
-function HeroArt() {
+function HeroArt({ leftFade = true }: { leftFade?: boolean }) {
   return (
     <div style={{ position: "absolute", inset: 0 }}>
       <div
@@ -415,7 +456,7 @@ function HeroArt() {
           inset: 0,
           zIndex: 0,
           background:
-            "radial-gradient(60% 55% at 74% 38%, rgba(255,255,255,0.06), transparent 70%), radial-gradient(50% 50% at 46% 55%, rgba(255,255,255,0.05), transparent 70%)",
+            "radial-gradient(60% 55% at 74% 38%, rgba(255,255,255,0.03), transparent 70%), radial-gradient(50% 50% at 46% 55%, rgba(255,255,255,0.02), transparent 70%)",
         }}
       />
       <LaptopArt />
@@ -427,8 +468,9 @@ function HeroArt() {
           inset: 0,
           zIndex: 40,
           pointerEvents: "none",
-          background:
-            "linear-gradient(90deg,#111113 0%, rgba(17,17,19,0.4) 22%, transparent 42%), linear-gradient(180deg, transparent 62%, #111113 100%)",
+          background: leftFade
+            ? "linear-gradient(90deg,#111113 0%, rgba(17,17,19,0.4) 22%, transparent 42%), linear-gradient(180deg, transparent 62%, #111113 100%)"
+            : "linear-gradient(180deg, transparent 62%, #111113 100%)",
         }}
       />
     </div>
@@ -437,11 +479,11 @@ function HeroArt() {
 
 export function Hero() {
   return (
-    <section className="relative w-full lg:h-[554px]">
+    <section className="relative w-full lg:h-[634px]">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 z-0 hidden lg:block"
-        style={{ top: -80, height: 802 }}
+        style={{ top: 0, height: 802 }}
       >
         <div
           className="absolute inset-y-0 overflow-hidden"
@@ -451,7 +493,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto hidden w-[1150px] max-w-full pt-[167px] lg:block">
+      <div className="relative z-10 mx-auto hidden w-[1150px] max-w-full pt-[247px] lg:block">
         <Headline
           breakLines
           style={{
@@ -477,9 +519,14 @@ export function Hero() {
 
       <div className="lg:hidden">
         <div className="relative h-[420px] w-full overflow-hidden">
-          <HeroArt />
+          <div
+            aria-hidden
+            className="absolute left-[-105px] top-0 h-[802px] w-[1224px] origin-top-left scale-[0.52]"
+          >
+            <HeroArt leftFade={false} />
+          </div>
         </div>
-        <div className="px-6 pt-8">
+        <div className="px-6">
           <Headline
             breakLines={false}
             style={{

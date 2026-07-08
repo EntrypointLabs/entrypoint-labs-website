@@ -42,18 +42,6 @@ function CardHeader({ name, desc, product }: { name: string; desc: string; produ
   );
 }
 
-function HoverHighlight() {
-  return (
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0 z-[1] opacity-0 transition-opacity duration-200 group-hover:opacity-[0.05]"
-      style={{
-        background: "radial-gradient(420px circle at 50% 28%, #ffffff, transparent 70%)",
-      }}
-    />
-  );
-}
-
 function MeridianArt() {
   const rows: [string, string, string][] = [
     ["Operations", "$650,000.00", "56%"],
@@ -172,33 +160,37 @@ function FluxArt() {
   );
 }
 
+/* rotate(-24) + skewX(42) maps a rect's edges onto both ±24° grid-line families;
+   scaleY adds the lying-flat foreshortening. */
+const ISO_TRANSFORM = "rotate(-24deg) skewX(42deg) scaleY(0.62)";
+
 function IsoTile({
   style,
-  gradient,
-  angle,
-  skew,
+  background,
+  clipPath,
   label,
 }: {
   style: CSSProperties;
-  gradient: string;
-  angle: number;
-  skew: number;
+  background: string;
+  clipPath?: string;
   label?: string;
 }) {
   return (
-    <div className="absolute" style={style}>
+    <div className="absolute" style={{ ...style, transform: ISO_TRANSFORM }}>
       <div
-        className="h-full w-full rounded-[8px]"
-        style={{ background: gradient, transform: `rotate(${angle}deg) skewX(${skew}deg)` }}
-      />
-      {label && (
-        <span
-          className="pointer-events-none absolute inset-0 flex items-center justify-center text-[13px] font-medium text-white"
-          style={{ transform: `rotate(${angle}deg)` }}
-        >
-          {label}
-        </span>
-      )}
+        className="relative flex h-full w-full items-center justify-center"
+        style={{
+          background,
+          clipPath,
+          borderRadius: clipPath ? undefined : 6,
+          boxShadow:
+            "inset 0 1px 0 rgba(255,255,255,0.35), inset -14px -10px 28px rgba(0,0,0,0.28)",
+        }}
+      >
+        {label && (
+          <span className="text-[13px] font-medium text-white">{label}</span>
+        )}
+      </div>
     </div>
   );
 }
@@ -210,28 +202,23 @@ function MeshArt() {
         className="absolute -inset-16"
         style={{
           backgroundImage:
-            "repeating-linear-gradient(24deg, rgba(255,255,255,0.14) 0 1px, transparent 1px 42px), repeating-linear-gradient(-24deg, rgba(255,255,255,0.14) 0 1px, transparent 1px 42px)",
+            "repeating-linear-gradient(24deg, rgba(255,255,255,0.14) 0 1px, transparent 1px 35.5px), repeating-linear-gradient(-24deg, rgba(255,255,255,0.14) 0 1px, transparent 1px 35.5px)",
         }}
       />
       <IsoTile
-        style={{ top: 148, left: 36, width: 118, height: 60 }}
-        gradient="linear-gradient(135deg, #6EA8FE, #3560D8)"
-        angle={-24}
-        skew={-16}
+        style={{ top: 150, left: 48, width: 120, height: 76 }}
+        background="linear-gradient(115deg, #7FB2FF 0%, #3D66DB 60%, #27439B 100%)"
         label="Yield"
       />
       <IsoTile
-        style={{ bottom: -18, left: -34, width: 132, height: 58 }}
-        gradient="linear-gradient(135deg, #6EE7A8, #12925A)"
-        angle={-24}
-        skew={-16}
+        style={{ bottom: -14, left: -40, width: 132, height: 78 }}
+        background="linear-gradient(115deg, #7FEDB4 0%, #17A467 60%, #0B6B42 100%)"
         label="Trade"
       />
       <IsoTile
-        style={{ top: 108, right: -42, width: 120, height: 64 }}
-        gradient="linear-gradient(135deg, #FF8A5B, #E23F3F)"
-        angle={24}
-        skew={16}
+        style={{ top: 96, right: -56, width: 170, height: 110 }}
+        background="linear-gradient(115deg, #FF9E66 0%, #F0563F 55%, #C22B2B 100%)"
+        clipPath="polygon(0 50%, 100% 0, 100% 100%)"
       />
     </div>
   );
@@ -247,15 +234,15 @@ export function ProductCards() {
   return (
     <section className="mx-auto mt-12 flex w-full max-w-[1150px] flex-col gap-3 px-6 lg:mt-16 lg:w-[1150px] lg:max-w-full lg:flex-row lg:gap-[9.5px] lg:px-0">
       {PRODUCTS.map(({ key, name, desc }) => (
-        <article
+        <a
           key={key}
-          className="group relative h-[420px] w-full overflow-hidden rounded-[18px] bg-[#0E0E0F] lg:h-[400px] lg:w-[377px]"
+          href="#"
+          className="relative block h-[420px] w-full cursor-pointer overflow-hidden rounded-[18px] bg-[#0E0E0F] lg:h-[400px] lg:w-[377px]"
         >
           <CardHeader name={name} desc={desc} product={key} />
           <CardArt product={key} />
-          <HoverHighlight />
           <ArrowLink className="z-20" />
-        </article>
+        </a>
       ))}
     </section>
   );

@@ -172,7 +172,7 @@ export function Nav() {
   }, [mobileOpen]);
 
   return (
-    <header className="relative z-50 w-full text-white">
+    <header className="fixed inset-x-0 top-0 z-50 text-white">
       <div className="hidden h-20 w-full items-center bg-[var(--sq-nav-bg)] backdrop-blur-[12px] lg:flex">
         <a href="#" className="flex items-center gap-2.5 pl-[110px]">
           <Logomark size={24} />
@@ -210,14 +210,14 @@ export function Nav() {
 
           <NavDropdown
             label="Resources"
-            panelClassName="-left-[20px] w-[160px] p-2"
+            panelClassName="-left-[20px] w-[125px] overflow-hidden"
           >
             <div className="flex flex-col">
               {RESOURCES.map((item) => (
                 <a
                   key={item}
                   href="#"
-                  className="rounded-[8px] px-3 py-2.5 text-[15px] text-white/70 transition-colors duration-150 hover:bg-white/5 hover:text-white"
+                  className="flex h-[39px] items-center px-5 text-[15px] text-white/70 transition-colors duration-150 hover:bg-white/5 hover:text-white"
                 >
                   {item}
                 </a>
@@ -227,13 +227,13 @@ export function Nav() {
 
           <a
             href="#"
-            className="text-[16px] leading-[22.4px] font-medium text-white transition-colors duration-150 hover:text-white/70"
+            className="text-[16px] leading-[22.4px] font-medium text-white"
           >
             Protocol
           </a>
           <a
             href="#"
-            className="text-[16px] leading-[22.4px] font-medium text-white transition-colors duration-150 hover:text-white/70"
+            className="text-[16px] leading-[22.4px] font-medium text-white"
           >
             Company
           </a>
