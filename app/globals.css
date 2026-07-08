@@ -3,6 +3,19 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Landing rebuild tokens (squads-rebuild branch) */
+:root {
+  --sq-canvas: #111113;
+  --sq-card: #0e0e0f;
+  --sq-nav-bg: rgba(16, 16, 18, 0.76);
+  --sq-text-secondary: rgba(255, 255, 255, 0.55);
+  --sq-footer-link: rgba(255, 255, 255, 0.5);
+}
+
+.sq-canvas {
+  background-color: var(--sq-canvas);
+}
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
