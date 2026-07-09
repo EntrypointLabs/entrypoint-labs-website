@@ -78,7 +78,6 @@ function XendArt() {
               alt=""
               className="h-full w-full object-cover object-top"
             />
-            <span className="absolute left-1/2 top-[8px] h-[16px] w-[64px] -translate-x-1/2 rounded-full bg-black" />
           </div>
         </div>
       </div>

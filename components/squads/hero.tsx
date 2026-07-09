@@ -480,19 +480,6 @@ function HeroArt({ leftFade = true }: { leftFade?: boolean }) {
 export function Hero() {
   return (
     <section className="relative w-full lg:h-[634px]">
-      {/* <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 z-0 hidden lg:block"
-        style={{ top: 0, height: 802 }}
-      >
-        <div
-          className="absolute inset-y-0 overflow-hidden"
-          style={{ left: 216, right: 0 }}
-        >
-          <HeroArt />
-        </div>
-      </div> */}
-
       <div className="relative z-10 mx-auto hidden w-[1150px] max-w-full pt-[247px] lg:block">
         <Headline
           breakLines
