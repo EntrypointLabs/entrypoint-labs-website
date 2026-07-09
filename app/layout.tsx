@@ -4,13 +4,13 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/next";
 import { Suspense } from "react";
+import { LoaderScreen } from "@/components/squads/loader";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Entrypoint Labs - Cutting-Edge Research Company",
+  title: "Entrypoint Labs — Products for the onchain economy",
   description:
-    "Building Xend, a revolutionary platform that plugs stablecoin payments into the internet.",
-  generator: "v0.app",
+    "Entrypoint Labs builds Xend, Ultraprop, Cortex and Pontoon — consumer payments, onchain markets, AI memory and developer tools.",
 };
 
 export default function RootLayout({
@@ -23,7 +23,7 @@ export default function RootLayout({
       <body
         className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}
       >
-        <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+        <Suspense fallback={<LoaderScreen />}>{children}</Suspense>
         <Analytics />
       </body>
     </html>
