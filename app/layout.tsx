@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   title: "Entrypoint Labs — Products for the onchain economy",
   description:
     "Entrypoint Labs builds Xend, Ultraprop, Cortex and Pontoon — consumer payments, onchain markets, AI memory and developer tools.",
-  generator: "v0.app",
 };
 
 export default function RootLayout({
