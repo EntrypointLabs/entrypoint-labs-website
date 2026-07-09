@@ -504,15 +504,7 @@ export function Hero() {
         </p>
       </div>
 
-      <div className="lg:hidden">
-        <div className="relative h-[420px] w-full overflow-hidden">
-          <div
-            aria-hidden
-            className="absolute left-[-105px] top-0 h-[802px] w-[1224px] origin-top-left scale-[0.52]"
-          >
-            <HeroArt leftFade={false} />
-          </div>
-        </div>
+      <div className="lg:hidden pt-28">
         <div className="px-6">
           <Headline
             breakLines={false}
