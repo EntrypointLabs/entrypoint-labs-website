@@ -11,8 +11,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Careers — Entrypoint Labs",
+  title: "Careers",
   description: "Open roles at Entrypoint Labs.",
+  alternates: {
+    canonical: "/careers",
+  },
 };
 
 export default function Page() {

@@ -25,9 +25,12 @@ const pixelify = Pixelify_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Company — Entrypoint Labs",
+  title: "Company",
   description:
-    "Entrypoint Labs is a product R&D lab building for the onchain economy.",
+    "Entrypoint Labs is a product R&D lab building for the onchain economy — the team behind Xend, Ultraprop, Cortex and Pontoon.",
+  alternates: {
+    canonical: "/company",
+  },
 };
 
 const CONTAINER = "mx-auto w-[1150px] max-w-full px-6 lg:px-0";
