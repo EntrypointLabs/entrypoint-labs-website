@@ -1,34 +1,25 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { useEffect, useState } from "react";
 import { Logomark } from "./brand";
 
 const HOLD_MS = 1600;
 const FADE_MS = 400;
 
-export function Loader() {
-  const [visible, setVisible] = useState(true);
-  const [fadingOut, setFadingOut] = useState(false);
-
-  useEffect(() => {
-    const fadeTimer = setTimeout(() => setFadingOut(true), HOLD_MS);
-    const unmountTimer = setTimeout(() => setVisible(false), HOLD_MS + FADE_MS);
-    return () => {
-      clearTimeout(fadeTimer);
-      clearTimeout(unmountTimer);
-    };
-  }, []);
-
-  if (!visible) return null;
-
+/* The brand loading screen: white field + spinning squircle mark. Also used
+   directly as the app-wide Suspense fallback in app/layout.tsx. */
+export function LoaderScreen({
+  className = "",
+  style,
+}: {
+  className?: string;
+  style?: CSSProperties;
+}) {
   return (
     <div
-      className={`fixed inset-0 z-[100] flex items-center justify-center ${fadingOut ? "pointer-events-none" : ""}`}
-      style={{
-        backgroundColor: "#FCFCFE",
-        opacity: fadingOut ? 0 : 1,
-        transition: `opacity ${FADE_MS}ms ease-out`,
-      }}
+      className={`fixed inset-0 z-[100] flex items-center justify-center ${className}`}
+      style={{ backgroundColor: "#FCFCFE", ...style }}
       aria-hidden
     >
       <Logomark size={50} className="sq-loader-mark text-[#1E1E1E]" />
@@ -54,5 +45,31 @@ export function Loader() {
         }
       `}</style>
     </div>
+  );
+}
+
+export function Loader() {
+  const [visible, setVisible] = useState(true);
+  const [fadingOut, setFadingOut] = useState(false);
+
+  useEffect(() => {
+    const fadeTimer = setTimeout(() => setFadingOut(true), HOLD_MS);
+    const unmountTimer = setTimeout(() => setVisible(false), HOLD_MS + FADE_MS);
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(unmountTimer);
+    };
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <LoaderScreen
+      className={fadingOut ? "pointer-events-none" : ""}
+      style={{
+        opacity: fadingOut ? 0 : 1,
+        transition: `opacity ${FADE_MS}ms ease-out`,
+      }}
+    />
   );
 }

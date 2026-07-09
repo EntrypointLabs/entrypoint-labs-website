@@ -1,4 +1,4 @@
-import { Logomark, Wordmark } from "./brand";
+import { Logomark, Wordmark, XLogo } from "./brand";
 
 type FooterLinkItem = {
   label: string;
@@ -24,15 +24,17 @@ const FOOTER_COLUMNS: FooterColumn[] = [
   {
     title: "Resources",
     links: [
-      { label: "Blog" },
-      { label: "Docs" },
+      { label: "Docs", href: "https://xend.global/litepaper.pdf" },
       { label: "Github", href: "https://github.com/EntrypointLabs" },
-      { label: "X", icon: "x" },
+      { label: "X", href: "https://x.com/_0xGifted", icon: "x" },
     ],
   },
   {
     title: "Company",
-    links: [{ label: "About" }, { label: "Brand Kit" }, { label: "Careers" }],
+    links: [
+      { label: "About", href: "/company" },
+      { label: "Careers", href: "/careers" },
+    ],
   },
   {
     title: "Legal",
@@ -41,19 +43,6 @@ const FOOTER_COLUMNS: FooterColumn[] = [
 ];
 
 const COLUMN_X = [467, 657, 848, 1038];
-
-function XIcon() {
-  return (
-    <svg width={16} height={16} viewBox="0 0 16 16" fill="none" aria-hidden>
-      <path
-        d="M1.2 1.2 L14.8 14.8 M14.8 1.2 L1.2 14.8"
-        stroke="currentColor"
-        strokeWidth={1.5}
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
 
 function FooterLink({ label, href = "#", icon }: FooterLinkItem) {
   const isExternal = href.startsWith("http");
@@ -65,7 +54,7 @@ function FooterLink({ label, href = "#", icon }: FooterLinkItem) {
       aria-label={icon === "x" ? "X (Twitter)" : undefined}
       className="inline-flex w-fit items-center whitespace-nowrap text-base leading-[22.4px] text-white/50 transition-colors duration-150 hover:text-white"
     >
-      {icon === "x" ? <XIcon /> : label}
+      {icon === "x" ? <XLogo size={16} /> : label}
     </a>
   );
 }

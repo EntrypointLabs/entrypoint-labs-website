@@ -4,6 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/next";
 import { Suspense } from "react";
+import { LoaderScreen } from "@/components/squads/loader";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export default function RootLayout({
       <body
         className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}
       >
-        <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+        <Suspense fallback={<LoaderScreen />}>{children}</Suspense>
         <Analytics />
       </body>
     </html>

@@ -48,10 +48,9 @@ const PRODUCTS: ProductItem[] = [
 ];
 
 const RESOURCES: { label: string; href: string }[] = [
-  { label: "Blog", href: "#" },
-  { label: "Docs", href: "#" },
+  { label: "Docs", href: "https://xend.global/litepaper.pdf" },
   { label: "Github", href: "https://github.com/EntrypointLabs" },
-  { label: "X", href: "#" },
+  { label: "X", href: "https://x.com/_0xGifted" },
 ];
 
 function ProductGlyph({ icon, size }: { icon: ProductIconKind; size: number }) {
@@ -192,9 +191,9 @@ export function Nav() {
                     {...(isExternal
                       ? { target: "_blank", rel: "noreferrer" }
                       : {})}
-                    className="flex items-start gap-3 rounded-[8px] px-2.5 py-2 transition-colors duration-150 hover:bg-white/5"
+                    className="group flex items-start gap-3 rounded-[8px] px-2.5 py-2 transition-colors duration-150 hover:bg-white/5"
                   >
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center text-white">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center text-white/40 transition-colors duration-150 group-hover:text-white">
                       <ProductGlyph icon={product.icon} size={20} />
                     </span>
                     <span className="flex flex-col">
@@ -220,6 +219,9 @@ export function Nav() {
                 <a
                   key={item.label}
                   href={item.href}
+                  {...(item.href.startsWith("http")
+                    ? { target: "_blank", rel: "noreferrer" }
+                    : {})}
                   className="flex h-[39px] items-center px-5 text-[15px] text-white/70 transition-colors duration-150 hover:bg-white/5 hover:text-white"
                 >
                   {item.label}
@@ -229,13 +231,15 @@ export function Nav() {
           </NavDropdown>
 
           <a
-            href="#"
+            href="https://xend.global/litepaper.pdf"
+            target="_blank"
+            rel="noreferrer"
             className="text-[16px] leading-[22.4px] font-medium text-white"
           >
-            About
+            Protocol
           </a>
           <a
-            href="#"
+            href="/company"
             className="text-[16px] leading-[22.4px] font-medium text-white"
           >
             Company
@@ -306,6 +310,9 @@ export function Nav() {
                   key={item.label}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
+                  {...(item.href.startsWith("http")
+                    ? { target: "_blank", rel: "noreferrer" }
+                    : {})}
                   className="flex h-11 items-center text-[24px] font-medium text-white"
                 >
                   {item.label}
@@ -316,14 +323,16 @@ export function Nav() {
 
           <div className="mt-auto flex flex-col gap-4 pt-8 pb-[120px]">
             <a
-              href="#"
+              href="https://xend.global/litepaper.pdf"
+              target="_blank"
+              rel="noreferrer"
               onClick={() => setMobileOpen(false)}
               className="text-[16px] font-medium text-white"
             >
-              About
+              Protocol
             </a>
             <a
-              href="#"
+              href="/company"
               onClick={() => setMobileOpen(false)}
               className="text-[16px] font-medium text-white"
             >
