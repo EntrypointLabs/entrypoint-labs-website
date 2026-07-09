@@ -1,5 +1,6 @@
 import { Inter, Pixelify_Sans } from "next/font/google";
 
+import { BackedBy } from "@/components/squads/backed-by";
 import { Loader } from "@/components/squads/loader";
 import { Nav } from "@/components/squads/nav";
 import { Hero } from "@/components/squads/hero";
@@ -31,6 +32,7 @@ export default function Page() {
         <Hero />
         <ProductCards />
         <MultisigCard />
+        <BackedBy className="mt-24 lg:mt-32" />
       </main>
       <SiteFooter />
     </div>

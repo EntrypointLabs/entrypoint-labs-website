@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Pixelify_Sans } from "next/font/google";
 
+import { BackedBy } from "@/components/squads/backed-by";
 import { Loader } from "@/components/squads/loader";
 import { Nav } from "@/components/squads/nav";
 import { SiteFooter } from "@/components/squads/site-footer";
@@ -203,6 +204,7 @@ export default function Page() {
         <CompanyHero />
         <WhatWeBuild />
         <HowWeWork />
+        <BackedBy className="mt-24 lg:mt-40" />
         <ClosingStrip />
       </main>
       <SiteFooter />

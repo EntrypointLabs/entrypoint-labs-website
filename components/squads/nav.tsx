@@ -170,7 +170,7 @@ export function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 text-white">
       <div className="hidden h-20 w-full items-center bg-[var(--sq-nav-bg)] backdrop-blur-[12px] lg:flex">
-        <a href="#" className="flex items-center gap-2.5 pl-[110px]">
+        <a href="/" className="flex items-center gap-2.5 pl-[110px]">
           <Logomark size={24} />
           <Wordmark className="text-[15px]" />
         </a>
@@ -248,7 +248,7 @@ export function Nav() {
       </div>
 
       <div className="flex h-16 w-full items-center justify-between bg-[var(--sq-nav-bg)] px-6 backdrop-blur-[12px] lg:hidden">
-        <a href="#" className="flex items-center">
+        <a href="/" className="flex items-center">
           <Logomark size={24} />
         </a>
         <button
