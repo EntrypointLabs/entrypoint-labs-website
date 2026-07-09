@@ -2,10 +2,10 @@ import type { CSSProperties } from "react";
 
 import { Logomark } from "@/components/squads/brand";
 
-const H1_LINES = ["Products and rails", "for the open dollar", "economy"];
+const H1_LINES = ["Products and tools", "for the onchain", "economy"];
 
 const PARAGRAPH =
-  "We build on open networks, programmable money and modern capital rails to bring better financial services to every team and builder.";
+  "We build consumer payments, onchain markets, AI memory and developer tools to bring open networks to everyday life for everyone.";
 
 function Headline({
   breakLines,
@@ -480,7 +480,7 @@ function HeroArt({ leftFade = true }: { leftFade?: boolean }) {
 export function Hero() {
   return (
     <section className="relative w-full lg:h-[634px]">
-      <div
+      {/* <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 z-0 hidden lg:block"
         style={{ top: 0, height: 802 }}
@@ -491,7 +491,7 @@ export function Hero() {
         >
           <HeroArt />
         </div>
-      </div>
+      </div> */}
 
       <div className="relative z-10 mx-auto hidden w-[1150px] max-w-full pt-[247px] lg:block">
         <Headline

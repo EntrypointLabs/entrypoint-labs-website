@@ -3,65 +3,62 @@
 import { useEffect, useRef, useState } from "react";
 
 import {
-  FluxGlyph,
+  CortexMark,
   Logomark,
-  MeridianGlyph,
-  PixelMesh,
+  PontoonMark,
+  UltrapropMark,
   Wordmark,
+  XendMark,
 } from "./brand";
 
-type ProductIconKind = "meridian" | "flux" | "logomark" | "pixelmesh";
+type ProductIconKind = "xend" | "ultraprop" | "cortex" | "pontoon";
 
 type ProductItem = {
   name: string;
   desc: string;
   icon: ProductIconKind;
+  href: string;
 };
 
 const PRODUCTS: ProductItem[] = [
   {
-    name: "Meridian",
-    desc: "A business account to hold and move money.",
-    icon: "meridian",
+    name: "Xend",
+    desc: "A checking account for the internet.",
+    icon: "xend",
+    href: "https://xend.global",
   },
   {
-    name: "Flux",
-    desc: "A personal money app for digital dollars and tokens.",
-    icon: "flux",
+    name: "Ultraprop",
+    desc: "An on-chain crypto prop trading firm.",
+    icon: "ultraprop",
+    href: "https://ultraprop.xyz",
   },
   {
-    name: "Multisig",
-    desc: "A multisig platform to protect onchain treasuries.",
-    icon: "logomark",
+    name: "Cortex",
+    desc: "A sovereign memory layer for AI.",
+    icon: "cortex",
+    href: "https://www.usecortexai.xyz",
   },
   {
-    name: "Mesh",
-    desc: "An open API for payouts, cards and returns.",
-    icon: "pixelmesh",
+    name: "Pontoon",
+    desc: "A local TON sandbox and inspector.",
+    icon: "pontoon",
+    href: "#",
   },
 ];
 
-const RESOURCES = ["Blog", "Docs", "Github", "X"];
+const RESOURCES: { label: string; href: string }[] = [
+  { label: "Blog", href: "#" },
+  { label: "Docs", href: "#" },
+  { label: "Github", href: "https://github.com/EntrypointLabs" },
+  { label: "X", href: "#" },
+];
 
-function ProductGlyph({
-  icon,
-  size,
-}: {
-  icon: ProductIconKind;
-  size: number;
-}) {
-  if (icon === "pixelmesh") {
-    return (
-      <PixelMesh
-        className={
-          size >= 24 ? "text-[20px] leading-none" : "text-[13px] leading-none"
-        }
-      />
-    );
-  }
-  if (icon === "meridian") return <MeridianGlyph size={size} />;
-  if (icon === "flux") return <FluxGlyph size={size} />;
-  return <Logomark size={size} />;
+function ProductGlyph({ icon, size }: { icon: ProductIconKind; size: number }) {
+  if (icon === "xend") return <XendMark size={size} />;
+  if (icon === "ultraprop") return <UltrapropMark size={size} />;
+  if (icon === "cortex") return <CortexMark size={size} />;
+  return <PontoonMark size={size} />;
 }
 
 function ChevronIcon({ open }: { open: boolean }) {
@@ -186,25 +183,31 @@ export function Nav() {
             panelClassName="-left-[22px] w-[246px] p-3"
           >
             <div className="flex flex-col">
-              {PRODUCTS.map((product) => (
-                <a
-                  key={product.name}
-                  href="#"
-                  className="flex items-start gap-3 rounded-[8px] px-2.5 py-2 transition-colors duration-150 hover:bg-white/5"
-                >
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center text-white">
-                    <ProductGlyph icon={product.icon} size={20} />
-                  </span>
-                  <span className="flex flex-col">
-                    <span className="text-[16px] font-medium text-white">
-                      {product.name}
+              {PRODUCTS.map((product) => {
+                const isExternal = product.href.startsWith("http");
+                return (
+                  <a
+                    key={product.name}
+                    href={product.href}
+                    {...(isExternal
+                      ? { target: "_blank", rel: "noreferrer" }
+                      : {})}
+                    className="flex items-start gap-3 rounded-[8px] px-2.5 py-2 transition-colors duration-150 hover:bg-white/5"
+                  >
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center text-white">
+                      <ProductGlyph icon={product.icon} size={20} />
                     </span>
-                    <span className="mt-1 text-[13px] leading-[18px] text-white/50">
-                      {product.desc}
+                    <span className="flex flex-col">
+                      <span className="text-[16px] font-medium text-white">
+                        {product.name}
+                      </span>
+                      <span className="mt-1 text-[13px] leading-[18px] text-white/50">
+                        {product.desc}
+                      </span>
                     </span>
-                  </span>
-                </a>
-              ))}
+                  </a>
+                );
+              })}
             </div>
           </NavDropdown>
 
@@ -215,11 +218,11 @@ export function Nav() {
             <div className="flex flex-col">
               {RESOURCES.map((item) => (
                 <a
-                  key={item}
-                  href="#"
+                  key={item.label}
+                  href={item.href}
                   className="flex h-[39px] items-center px-5 text-[15px] text-white/70 transition-colors duration-150 hover:bg-white/5 hover:text-white"
                 >
-                  {item}
+                  {item.label}
                 </a>
               ))}
             </div>
@@ -229,7 +232,7 @@ export function Nav() {
             href="#"
             className="text-[16px] leading-[22.4px] font-medium text-white"
           >
-            Protocol
+            About
           </a>
           <a
             href="#"
@@ -273,19 +276,25 @@ export function Nav() {
           <div className="mt-6 flex flex-col">
             <p className="text-[14px] text-white/40">Products</p>
             <div className="mt-4 flex flex-col">
-              {PRODUCTS.map((product) => (
-                <a
-                  key={product.name}
-                  href="#"
-                  onClick={() => setMobileOpen(false)}
-                  className="flex h-11 items-center justify-between text-[24px] font-medium text-white"
-                >
-                  {product.name}
-                  <span className="flex items-center text-white">
-                    <ProductGlyph icon={product.icon} size={24} />
-                  </span>
-                </a>
-              ))}
+              {PRODUCTS.map((product) => {
+                const isExternal = product.href.startsWith("http");
+                return (
+                  <a
+                    key={product.name}
+                    href={product.href}
+                    onClick={() => setMobileOpen(false)}
+                    {...(isExternal
+                      ? { target: "_blank", rel: "noreferrer" }
+                      : {})}
+                    className="flex h-11 items-center justify-between text-[24px] font-medium text-white"
+                  >
+                    {product.name}
+                    <span className="flex items-center text-white">
+                      <ProductGlyph icon={product.icon} size={24} />
+                    </span>
+                  </a>
+                );
+              })}
             </div>
           </div>
 
@@ -294,12 +303,12 @@ export function Nav() {
             <div className="mt-4 flex flex-col">
               {RESOURCES.map((item) => (
                 <a
-                  key={item}
-                  href="#"
+                  key={item.label}
+                  href={item.href}
                   onClick={() => setMobileOpen(false)}
                   className="flex h-11 items-center text-[24px] font-medium text-white"
                 >
-                  {item}
+                  {item.label}
                 </a>
               ))}
             </div>
@@ -311,7 +320,7 @@ export function Nav() {
               onClick={() => setMobileOpen(false)}
               className="text-[16px] font-medium text-white"
             >
-              Protocol
+              About
             </a>
             <a
               href="#"

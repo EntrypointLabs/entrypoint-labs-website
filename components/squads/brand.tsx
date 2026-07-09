@@ -35,56 +35,73 @@ export function Wordmark({ className = "" }: { className?: string }) {
       className={`font-[500] tracking-[0.18em] text-current ${className}`}
       style={{ fontFamily: "var(--font-inter)" }}
     >
-      STACKS
+      ENTRYPOINT
     </span>
   );
 }
 
-export function PixelMesh({ className = "" }: { className?: string }) {
-  return (
-    <span
-      className={`text-current ${className}`}
-      style={{ fontFamily: "var(--font-pixel)", fontWeight: 600 }}
-    >
-      Mesh
-    </span>
-  );
-}
+/* Product marks reproduce each product's own vector logo (white/currentColor
+   variants also shipped as files in public/logos/). */
 
-export function MeridianGlyph({ size = 25 }: { size?: number }) {
+export function XendMark({ size = 24 }: { size?: number }) {
   return (
-    <svg
-      width={size}
-      height={(size * 22) / 25}
-      viewBox="0 0 25 22"
-      fill="none"
-      aria-hidden
-    >
-      <path d="M2 20 L8 5 L12.5 12.5 L17 3 L23 20 Z" fill="currentColor" />
+    <svg width={size} height={size} viewBox="0 0 200 200" fill="none" aria-hidden>
+      <g transform="translate(100 100)">
+        <path
+          d="M -95 0 C -50 -22 50 -22 95 0 C 50 22 -50 22 -95 0 Z"
+          fill="currentColor"
+          transform="rotate(45)"
+        />
+        <path
+          d="M -95 0 C -50 -22 50 -22 95 0 C 50 22 -50 22 -95 0 Z"
+          fill="currentColor"
+          transform="rotate(-45)"
+        />
+      </g>
     </svg>
   );
 }
 
-export function FluxGlyph({ size = 24 }: { size?: number }) {
+export function UltrapropMark({ size = 24 }: { size?: number }) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden
-    >
+    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" aria-hidden>
       <path
-        d="M5 9 L13 5 L19 13 L11 19 Z"
-        stroke="currentColor"
-        strokeOpacity={0.45}
-        strokeWidth={1.2}
-        strokeLinejoin="round"
+        d="M18 0 L38 0 L50 28 L28 28 L28 50 L0 38 L0 18 L12 12 Z M82 0 L62 0 L50 28 L72 28 L72 50 L100 38 L100 18 L88 12 Z M18 100 L38 100 L50 72 L28 72 L28 50 L0 62 L0 82 L12 88 Z M82 100 L62 100 L50 72 L72 72 L72 50 L100 62 L100 82 L88 88 Z"
+        fill="currentColor"
       />
-      <circle cx={5} cy={9} r={2.6} fill="currentColor" />
-      <circle cx={13} cy={5} r={2.6} fill="currentColor" />
-      <circle cx={19} cy={13} r={2.6} fill="currentColor" />
-      <circle cx={11} cy={19} r={2.6} fill="currentColor" />
+    </svg>
+  );
+}
+
+export function CortexMark({ size = 24 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 120 120" fill="currentColor" aria-hidden>
+      <circle cx={60} cy={60} r={13} />
+      {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
+        <g key={deg} transform={`rotate(${deg} 60 60)`}>
+          <rect x={51.5} y={19} width={6.5} height={25} rx={3.25} />
+          <rect x={62} y={19} width={6.5} height={25} rx={3.25} />
+        </g>
+      ))}
+    </svg>
+  );
+}
+
+export function PontoonMark({ size = 24 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <rect x={3} y={5} width={18} height={4} rx={2} fill="currentColor" />
+      <rect x={6.25} y={9} width={2.5} height={3.5} fill="currentColor" fillOpacity={0.72} />
+      <rect x={15.25} y={9} width={2.5} height={3.5} fill="currentColor" fillOpacity={0.72} />
+      <rect x={4} y={12.5} width={7} height={4} rx={2} fill="currentColor" fillOpacity={0.72} />
+      <rect x={13} y={12.5} width={7} height={4} rx={2} fill="currentColor" fillOpacity={0.72} />
+      <path
+        d="M3 20.25c1.5 -1.4 3 -1.4 4.5 0c1.5 1.4 3 1.4 4.5 0c1.5 -1.4 3 -1.4 4.5 0c1.5 1.4 3 1.4 4.5 0"
+        stroke="currentColor"
+        strokeWidth={1.6}
+        strokeLinecap="round"
+        opacity={0.55}
+      />
     </svg>
   );
 }

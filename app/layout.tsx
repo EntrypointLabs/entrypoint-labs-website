@@ -7,9 +7,9 @@ import { Suspense } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Entrypoint Labs - Cutting-Edge Research Company",
+  title: "Entrypoint Labs — Products for the onchain economy",
   description:
-    "Building Xend, a revolutionary platform that plugs stablecoin payments into the internet.",
+    "Entrypoint Labs builds Xend, Ultraprop, Cortex and Pontoon — consumer payments, onchain markets, AI memory and developer tools.",
   generator: "v0.app",
 };
 

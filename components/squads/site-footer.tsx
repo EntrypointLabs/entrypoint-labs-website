@@ -2,6 +2,7 @@ import { Logomark, Wordmark } from "./brand";
 
 type FooterLinkItem = {
   label: string;
+  href?: string;
   icon?: "x";
 };
 
@@ -14,10 +15,10 @@ const FOOTER_COLUMNS: FooterColumn[] = [
   {
     title: "Products",
     links: [
-      { label: "Meridian" },
-      { label: "Flux" },
-      { label: "Mesh" },
-      { label: "Multisig" },
+      { label: "Xend", href: "https://xend.global" },
+      { label: "Ultraprop", href: "https://ultraprop.xyz" },
+      { label: "Cortex", href: "https://www.usecortexai.xyz" },
+      { label: "Pontoon" },
     ],
   },
   {
@@ -25,7 +26,7 @@ const FOOTER_COLUMNS: FooterColumn[] = [
     links: [
       { label: "Blog" },
       { label: "Docs" },
-      { label: "Github" },
+      { label: "Github", href: "https://github.com/EntrypointLabs" },
       { label: "X", icon: "x" },
     ],
   },
@@ -54,10 +55,13 @@ function XIcon() {
   );
 }
 
-function FooterLink({ label, icon }: FooterLinkItem) {
+function FooterLink({ label, href = "#", icon }: FooterLinkItem) {
+  const isExternal = href.startsWith("http");
   return (
     <a
-      href="#"
+      href={href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noreferrer" : undefined}
       aria-label={icon === "x" ? "X (Twitter)" : undefined}
       className="inline-flex w-fit items-center whitespace-nowrap text-base leading-[22.4px] text-white/50 transition-colors duration-150 hover:text-white"
     >
@@ -71,9 +75,9 @@ function LegalText({ className = "" }: { className?: string }) {
     <>
       <p className="text-xs leading-4 text-white/35">All rights reserved.</p>
       <p className={`text-xs leading-4 text-white/35 ${className}`}>
-        Stacks Labs is a financial technology company.
+        Entrypoint Labs is a software company.
         <br />
-        It is not a bank and does not custody digital assets.
+        It is not a bank and does not custody customer funds.
       </p>
     </>
   );
@@ -104,6 +108,7 @@ export function SiteFooter() {
                   <FooterLink
                     key={link.label}
                     label={link.label}
+                    href={link.href}
                     icon={link.icon}
                   />
                 ))}
@@ -129,6 +134,7 @@ export function SiteFooter() {
                     <FooterLink
                       key={link.label}
                       label={link.label}
+                      href={link.href}
                       icon={link.icon}
                     />
                   ))}
@@ -137,12 +143,12 @@ export function SiteFooter() {
             ))}
           </div>
 
-          <div className="mt-12 flex items-start justify-between gap-4">
+          <div className="mt-12 flex flex-col gap-6">
             <div className="flex items-center gap-3">
               <Logomark size={28} />
               <Wordmark className="text-lg" />
             </div>
-            <div className="flex max-w-[170px] flex-col gap-[14px]">
+            <div className="flex flex-col gap-[14px]">
               <LegalText />
             </div>
           </div>
