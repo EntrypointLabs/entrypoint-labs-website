@@ -9,7 +9,7 @@ const PRODUCTS: { key: ProductKey; name: string; desc: string; href: string }[] 
     key: "pontoon",
     name: "Pontoon",
     desc: "A local TON blockchain sandbox with a desktop inspection GUI.",
-    href: "#",
+    href: "https://pontoon.entrypointlabs.xyz/",
   },
   {
     key: "xend",

@@ -146,6 +146,7 @@ const jsonLd = {
           "@type": "ListItem",
           position: 4,
           name: "Pontoon",
+          url: "https://pontoon.entrypointlabs.xyz/",
           description:
             "A local TON blockchain sandbox with a desktop inspection GUI — transaction trees, TVM traces and time control.",
         },

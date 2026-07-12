@@ -43,7 +43,7 @@ const PRODUCTS: ProductItem[] = [
     name: "Pontoon",
     desc: "A local TON sandbox and inspector.",
     icon: "pontoon",
-    href: "#",
+    href: "https://pontoon.entrypointlabs.xyz/",
   },
 ];
 

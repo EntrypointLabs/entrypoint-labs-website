@@ -57,7 +57,8 @@ export default function Page() {
       <LegalSection>
         <LegalLead>3. Products.</LegalLead> Entrypoint Labs builds and
         operates several separate products, including Xend (xend.global),
-        Ultraprop (ultraprop.xyz), Cortex (usecortexai.xyz), and Pontoon.
+        Ultraprop (ultraprop.xyz), Cortex (usecortexai.xyz), and Pontoon
+        (pontoon.entrypointlabs.xyz).
         Each product is governed by its own terms of service, privacy policy,
         and other agreements published on that product&apos;s respective
         site, and none of those terms are incorporated into this Agreement.

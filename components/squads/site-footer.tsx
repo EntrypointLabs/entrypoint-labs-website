@@ -18,7 +18,7 @@ const FOOTER_COLUMNS: FooterColumn[] = [
       { label: "Xend", href: "https://xend.global" },
       { label: "Ultraprop", href: "https://ultraprop.xyz" },
       { label: "Cortex", href: "https://www.usecortexai.xyz" },
-      { label: "Pontoon" },
+      { label: "Pontoon", href: "https://pontoon.entrypointlabs.xyz/" },
     ],
   },
   {
