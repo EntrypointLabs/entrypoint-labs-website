@@ -16,6 +16,13 @@ export const metadata: Metadata = {
     url: "https://entrypointlabs.xyz/legal/privacy-policy",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    site: "@entrypointlabs",
+    title: "Privacy Policy | Entrypoint Labs",
+    description:
+      "How Entrypoint Labs handles information, cookies, and your data rights on entrypointlabs.xyz.",
+  },
 };
 
 export default function Page() {

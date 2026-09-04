@@ -2,23 +2,19 @@ import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://entrypointlabs.xyz";
-  const now = new Date().toISOString();
   return [
     {
       url: base,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 1,
     },
     {
       url: `${base}/company`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${base}/careers`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.5,
     },

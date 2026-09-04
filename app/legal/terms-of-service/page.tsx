@@ -16,6 +16,13 @@ export const metadata: Metadata = {
     url: "https://entrypointlabs.xyz/legal/terms-of-service",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    site: "@entrypointlabs",
+    title: "Terms of Service | Entrypoint Labs",
+    description:
+      "Terms governing your use of entrypointlabs.xyz, the informational site for Entrypoint Labs.",
+  },
 };
 
 export default function Page() {
