@@ -26,7 +26,7 @@ const FOOTER_COLUMNS: FooterColumn[] = [
     links: [
       { label: "Docs", href: "https://xend.global/litepaper.pdf" },
       { label: "Github", href: "https://github.com/EntrypointLabs" },
-      { label: "X", href: "https://x.com/_0xGifted", icon: "x" },
+      { label: "X", href: "https://x.com/entrypointlabs", icon: "x" },
     ],
   },
   {

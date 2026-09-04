@@ -4,9 +4,17 @@ import { LegalLead, LegalPage, LegalSection } from "@/components/squads/legal-pa
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "Terms of service for the Entrypoint Labs website.",
+  description:
+    "Terms of service governing your use of the Entrypoint Labs website at entrypointlabs.xyz.",
   alternates: {
     canonical: "/legal/terms-of-service",
+  },
+  openGraph: {
+    title: "Terms of Service | Entrypoint Labs",
+    description:
+      "Terms governing your use of entrypointlabs.xyz, the informational site for Entrypoint Labs.",
+    url: "https://entrypointlabs.xyz/legal/terms-of-service",
+    type: "website",
   },
 };
 
@@ -158,12 +166,12 @@ export default function Page() {
         <LegalLead>12. Contact.</LegalLead> Questions about this Agreement
         can be sent to us on X at{" "}
         <a
-          href="https://x.com/_0xGifted"
+          href="https://x.com/entrypointlabs"
           target="_blank"
           rel="noreferrer"
           className="font-bold underline"
         >
-          @_0xGifted
+          @entrypointlabs
         </a>{" "}
         or through the issue tracker on our GitHub at{" "}
         <a

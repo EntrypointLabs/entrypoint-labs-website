@@ -31,6 +31,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/company",
   },
+  openGraph: {
+    title: "Company | Entrypoint Labs",
+    description:
+      "Meet the R&D lab building consumer payments, onchain markets, AI memory and developer tools on open networks.",
+    url: "https://entrypointlabs.xyz/company",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@entrypointlabs",
+    title: "Company | Entrypoint Labs",
+    description:
+      "Meet the R&D lab building consumer payments, onchain markets, AI memory and developer tools on open networks.",
+  },
 };
 
 const CONTAINER = "mx-auto w-[1150px] max-w-full px-6 lg:px-0";
@@ -81,7 +95,7 @@ const VALUES = [
 
 const CLOSING_LINKS = [
   { label: "Read the litepaper ↗", href: "https://xend.global/litepaper.pdf" },
-  { label: "Follow along on X ↗", href: "https://x.com/_0xGifted" },
+  { label: "Follow along on X ↗", href: "https://x.com/entrypointlabs" },
 ];
 
 function CompanyHero() {
