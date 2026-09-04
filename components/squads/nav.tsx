@@ -50,7 +50,7 @@ const PRODUCTS: ProductItem[] = [
 const RESOURCES: { label: string; href: string }[] = [
   { label: "Docs", href: "https://xend.global/litepaper.pdf" },
   { label: "Github", href: "https://github.com/EntrypointLabs" },
-  { label: "X", href: "https://x.com/_0xGifted" },
+  { label: "X", href: "https://x.com/entrypointlabs" },
 ];
 
 function ProductGlyph({ icon, size }: { icon: ProductIconKind; size: number }) {

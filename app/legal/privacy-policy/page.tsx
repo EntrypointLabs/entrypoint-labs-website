@@ -4,9 +4,24 @@ import { LegalLead, LegalPage, LegalSection } from "@/components/squads/legal-pa
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Privacy policy for the Entrypoint Labs website.",
+  description:
+    "Privacy policy for the Entrypoint Labs website — how we handle information, cookies, and your data rights.",
   alternates: {
     canonical: "/legal/privacy-policy",
+  },
+  openGraph: {
+    title: "Privacy Policy | Entrypoint Labs",
+    description:
+      "How Entrypoint Labs handles information, cookies, and your data rights on entrypointlabs.xyz.",
+    url: "https://entrypointlabs.xyz/legal/privacy-policy",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@entrypointlabs",
+    title: "Privacy Policy | Entrypoint Labs",
+    description:
+      "How Entrypoint Labs handles information, cookies, and your data rights on entrypointlabs.xyz.",
   },
 };
 
@@ -120,12 +135,12 @@ export default function Page() {
         <LegalLead>10. Contact.</LegalLead> Questions about this Policy can
         be sent to us on X at{" "}
         <a
-          href="https://x.com/_0xGifted"
+          href="https://x.com/entrypointlabs"
           target="_blank"
           rel="noreferrer"
           className="font-bold underline"
         >
-          @_0xGifted
+          @entrypointlabs
         </a>{" "}
         or through the issue tracker on our GitHub at{" "}
         <a

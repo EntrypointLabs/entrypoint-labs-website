@@ -25,22 +25,24 @@ export const metadata: Metadata = {
   description:
     "Entrypoint Labs is a product R&D lab building for the onchain economy: Xend, a checking account for the internet; Ultraprop, an on-chain prop trading firm; Cortex, a sovereign memory layer for AI; and Pontoon, a local TON blockchain sandbox.",
   keywords: [
+    "Entrypoint Labs",
     "onchain economy",
-    "product R&D lab",
     "crypto product studio",
+    "blockchain product lab",
+    "Xend stablecoin payments",
     "checking account for the internet",
     "stablecoin payments app",
+    "Ultraprop prop trading",
     "on-chain prop trading firm",
     "funded trading account crypto",
+    "Cortex AI memory",
     "sovereign AI memory layer",
     "encrypted memory for AI agents",
+    "Pontoon TON sandbox",
     "TON blockchain sandbox",
     "TON developer tools",
-    "Xend",
-    "Ultraprop",
-    "Cortex",
-    "Pontoon",
-    "Entrypoint Labs",
+    "web3 products",
+    "decentralized finance tools",
   ],
   applicationName: "Entrypoint Labs",
   authors: [{ name: "Entrypoint Labs" }],
@@ -72,8 +74,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@_0xGifted",
-    creator: "@_0xGifted",
+    site: "@entrypointlabs",
+    creator: "@entrypointlabs",
     title: "Entrypoint Labs — Products and tools for the onchain economy",
     description:
       "A product R&D lab building consumer payments, onchain markets, AI memory and developer tools on open networks.",
@@ -93,12 +95,25 @@ const jsonLd = {
       "@id": `${SITE_URL}#org`,
       name: "Entrypoint Labs",
       url: SITE_URL,
-      logo: `${SITE_URL}/logos/entrypoint-icon-1024.png`,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/logos/entrypoint-icon-1024.png`,
+        width: 1024,
+        height: 1024,
+      },
       description:
         "A product research and development lab building financial and developer software on open networks.",
       sameAs: [
-        "https://x.com/_0xGifted",
+        "https://x.com/entrypointlabs",
         "https://github.com/EntrypointLabs",
+      ],
+      knowsAbout: [
+        "blockchain",
+        "stablecoin payments",
+        "prop trading",
+        "AI memory",
+        "TON blockchain",
+        "developer tools",
       ],
     },
     {
@@ -121,34 +136,55 @@ const jsonLd = {
         {
           "@type": "ListItem",
           position: 1,
-          name: "Xend",
-          url: "https://xend.global",
-          description:
-            "A checking account for the internet — hold dollars, send to anyone by username in seconds for cents.",
+          item: {
+            "@type": "SoftwareApplication",
+            name: "Xend",
+            url: "https://xend.global",
+            applicationCategory: "FinanceApplication",
+            description:
+              "A checking account for the internet — hold dollars, send to anyone by username in seconds for cents.",
+            operatingSystem: "Web",
+            offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+          },
         },
         {
           "@type": "ListItem",
           position: 2,
-          name: "Ultraprop",
-          url: "https://ultraprop.xyz",
-          description:
-            "An on-chain prop trading firm — prove your edge in simulation against live markets and earn a funded account.",
+          item: {
+            "@type": "SoftwareApplication",
+            name: "Ultraprop",
+            url: "https://ultraprop.xyz",
+            applicationCategory: "FinanceApplication",
+            description:
+              "An on-chain prop trading firm — prove your edge in simulation against live markets and earn a funded account.",
+            operatingSystem: "Web",
+          },
         },
         {
           "@type": "ListItem",
           position: 3,
-          name: "Cortex",
-          url: "https://www.usecortexai.xyz",
-          description:
-            "A sovereign, encrypted memory layer for AI — durable memory you own, shared selectively with agents.",
+          item: {
+            "@type": "SoftwareApplication",
+            name: "Cortex",
+            url: "https://www.usecortexai.xyz",
+            applicationCategory: "DeveloperApplication",
+            description:
+              "A sovereign, encrypted memory layer for AI — durable memory you own, shared selectively with agents.",
+            operatingSystem: "Web",
+          },
         },
         {
           "@type": "ListItem",
           position: 4,
-          name: "Pontoon",
-          url: "https://pontoon.entrypointlabs.xyz/",
-          description:
-            "A local TON blockchain sandbox with a desktop inspection GUI — transaction trees, TVM traces and time control.",
+          item: {
+            "@type": "SoftwareApplication",
+            name: "Pontoon",
+            url: "https://pontoon.entrypointlabs.xyz/",
+            applicationCategory: "DeveloperApplication",
+            description:
+              "A local TON blockchain sandbox with a desktop inspection GUI — transaction trees, TVM traces and time control.",
+            operatingSystem: "Web, macOS, Windows, Linux",
+          },
         },
       ],
     },
