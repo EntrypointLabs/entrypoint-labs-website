@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Pixelify_Sans } from "next/font/google";
+import { inter, pixelify } from "@/app/fonts";
 
 import { BackedBy } from "@/components/squads/backed-by";
 import { Loader } from "@/components/squads/loader";
@@ -11,18 +11,6 @@ import {
   PontoonMark,
   PryddMark,
 } from "@/components/squads/brand";
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-inter",
-});
-
-const pixelify = Pixelify_Sans({
-  subsets: ["latin"],
-  weight: ["600"],
-  variable: "--font-pixel",
-});
 
 export const metadata: Metadata = {
   title: "Company",
