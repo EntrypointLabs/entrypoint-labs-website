@@ -1,8 +1,6 @@
-import type { CSSProperties } from "react";
+import { ArrowLink, OpenFuturesMark, PontoonMark, PryddMark } from "./brand";
 
-import { ArrowLink, PontoonMark, UltrapropMark, XendMark } from "./brand";
-
-type ProductKey = "pontoon" | "xend" | "ultraprop";
+type ProductKey = "pontoon" | "prydd" | "openfutures";
 
 const PRODUCTS: { key: ProductKey; name: string; desc: string; href: string }[] = [
   {
@@ -12,23 +10,23 @@ const PRODUCTS: { key: ProductKey; name: string; desc: string; href: string }[] 
     href: "https://pontoon.entrypointlabs.xyz/",
   },
   {
-    key: "xend",
-    name: "Xend",
-    desc: "A checking account for the internet — built for everyday life.",
-    href: "https://xend.global",
+    key: "prydd",
+    name: "PRYDD",
+    desc: "One app for everyday global money — hold dollars, send by username.",
+    href: "https://prydd.co",
   },
   {
-    key: "ultraprop",
-    name: "Ultraprop",
-    desc: "An on-chain prop firm — prove your edge, earn a funded account.",
-    href: "https://ultraprop.xyz",
+    key: "openfutures",
+    name: "OpenFutures",
+    desc: "Perps across every venue — best fill, or a funded account.",
+    href: "https://www.openfutures.xyz",
   },
 ];
 
 function CardGlyph({ product }: { product: ProductKey }) {
   if (product === "pontoon") return <PontoonMark />;
-  if (product === "xend") return <XendMark />;
-  return <UltrapropMark />;
+  if (product === "prydd") return <PryddMark />;
+  return <OpenFuturesMark />;
 }
 
 function CardHeader({ name, desc, product }: { name: string; desc: string; product: ProductKey }) {
@@ -67,95 +65,135 @@ function PontoonArt() {
   );
 }
 
-function XendArt() {
+/* Account window from prydd-website components/prydd/story-sections.tsx (AccountScene):
+   white 16px panel, hairline #eee, balance scale, black Send pill, @maya activity row. */
+function PryddArt() {
   return (
-    <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
-      <div className="absolute left-1/2 bottom-[-70px] w-[196px] -translate-x-1/2">
-        <div className="relative rounded-[30px] bg-[#1b1b1d] p-[7px] shadow-[0_30px_60px_-20px_rgba(0,0,0,0.65)]">
-          <div className="relative h-[300px] overflow-hidden rounded-[24px]">
-            <img
-              src="/products/xend-app.png"
-              alt=""
-              className="h-full w-full object-cover object-top"
-            />
+    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
+      <div className="absolute left-7 right-7 top-[148px] rounded-[16px] border border-black/[0.06] bg-white text-black shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+        <div className="flex items-center justify-between gap-3 border-b border-[#eee] px-4 py-2.5 text-[11px] leading-none">
+          <span className="flex items-center gap-[7px] font-medium">
+            <PryddMark size={15} />
+            Your account
+          </span>
+          <span className="text-[#727272]">USD</span>
+        </div>
+        <div className="px-4 pt-3">
+          <span className="block text-[11px] leading-[1.3] tracking-[-0.015em] text-[#727272]">
+            Dollar balance
+          </span>
+          <strong className="mt-1.5 block text-[36px] font-medium leading-[1.1] tracking-[-0.045em]">
+            $250<span className="text-[0.76em]">.00</span>
+          </strong>
+          <div className="mt-3 flex items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f5f5f5] px-2.5 py-[7px] text-[11px] leading-none">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+              </svg>
+              Add money
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-black px-2.5 py-[7px] text-[11px] leading-none text-white">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path d="M7 17 17 7M8 7h9v9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Send
+            </span>
           </div>
+        </div>
+        <div className="mt-3 flex items-center justify-between px-4 text-[11px]">
+          <strong className="font-medium">Activity</strong>
+          <span className="text-[10px] text-[#727272]">Today</span>
+        </div>
+        <div className="mx-4 mt-2 flex items-center gap-2 border-t border-[#eee] py-3">
+          <img
+            src="/products/prydd-maya.png"
+            alt=""
+            className="h-8 w-8 shrink-0 rounded-full object-cover"
+          />
+          <div className="min-w-0">
+            <strong className="block text-[12px] font-medium leading-none tracking-[-0.015em]">
+              To @maya
+            </strong>
+            <span className="mt-1 block text-[10px] leading-[1.3] text-[#727272]">Sent · Today</span>
+          </div>
+          <b className="ml-auto text-[12px] font-medium tracking-[-0.025em]">−$25.00</b>
         </div>
       </div>
     </div>
   );
 }
 
-/* rotate(-24) + skewX(42) maps a rect's edges onto both ±24° grid-line families;
-   scaleY adds the lying-flat foreshortening. */
-const ISO_TRANSFORM = "rotate(-24deg) skewX(42deg) scaleY(0.62)";
-
-function IsoTile({
-  style,
-  background,
-  clipPath,
-  label,
-  labelClassName,
-}: {
-  style: CSSProperties;
-  background: string;
-  clipPath?: string;
-  label?: string;
-  labelClassName?: string;
-}) {
+/* Order ticket from the OpenFutures marketing terminal (screen-terminal.webp)
+   and apps/trading markets.ts. Buy / Long uses the --long token, #2d63f5. */
+function OpenFuturesArt() {
   return (
-    <div className="absolute" style={{ ...style, transform: ISO_TRANSFORM }}>
+    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
       <div
-        className="relative flex h-full w-full items-center justify-center"
-        style={{
-          background,
-          clipPath,
-          borderRadius: clipPath ? undefined : 6,
-          boxShadow:
-            "inset 0 1px 0 rgba(255,255,255,0.35), inset -14px -10px 28px rgba(0,0,0,0.28)",
-        }}
+        className="absolute left-6 right-6 top-[168px] rounded-[4px] border border-[#242424] bg-[#161616] p-3.5 text-[#f5f5f4]"
+        style={{ fontFamily: "var(--font-geist-sans), Geist, sans-serif" }}
       >
-        {label && (
-          <span className={labelClassName ?? "text-[13px] font-medium text-white"}>{label}</span>
-        )}
+        <MarketRow
+          logo="/logos/openfutures-btc.svg"
+          symbol="BTC-PERP"
+          price="86,346.4"
+          change="+3.64%"
+        />
+        <MarketRow
+          logo="/logos/openfutures-nvda.svg"
+          symbol="NVDA"
+          price="182.40"
+          change="+1.84%"
+        />
+        <div className="mt-3 flex items-center gap-2 text-[11px] leading-none text-[#969694]">
+          <span>Venue</span>
+          <span className="text-[#f5f5f4]">Lighter</span>
+          <span className="ml-auto font-medium text-[#6f97ff]">Best</span>
+        </div>
+        <div className="mt-3 grid grid-cols-2 gap-1 rounded-[4px] border border-[#242424] bg-[#1b1b1b] p-1">
+          <span className="flex h-[36px] items-center justify-center rounded-[4px] bg-[#2d63f5] text-[12px] font-semibold text-white">
+            Buy / Long
+          </span>
+          <span className="flex h-[36px] items-center justify-center rounded-[4px] text-[12px] font-semibold text-[#969694]">
+            Sell / Short
+          </span>
+        </div>
       </div>
     </div>
   );
 }
 
-function UltrapropArt() {
+function MarketRow({
+  logo,
+  symbol,
+  price,
+  change,
+}: {
+  logo: string;
+  symbol: string;
+  price: string;
+  change: string;
+}) {
   return (
-    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
-      <div
-        className="absolute -inset-16"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(24deg, rgba(255,255,255,0.14) 0 1px, transparent 1px 35.5px), repeating-linear-gradient(-24deg, rgba(255,255,255,0.14) 0 1px, transparent 1px 35.5px)",
-        }}
-      />
-      <IsoTile
-        style={{ top: 150, left: 48, width: 120, height: 76 }}
-        background="linear-gradient(115deg, #7FB2FF 0%, #3D66DB 60%, #27439B 100%)"
-        label="BTC-PERP"
-        labelClassName="text-[11px] font-medium text-white"
-      />
-      <IsoTile
-        style={{ bottom: -14, left: -40, width: 132, height: 78 }}
-        background="linear-gradient(115deg, #7FEDB4 0%, #17A467 60%, #0B6B42 100%)"
-        label="Long"
-      />
-      <IsoTile
-        style={{ top: 96, right: -56, width: 170, height: 110 }}
-        background="linear-gradient(115deg, #FF8A8E 0%, #E5484D 55%, #B22B32 100%)"
-        clipPath="polygon(0 50%, 100% 0, 100% 100%)"
-      />
+    <div className="flex items-center gap-2 py-1.5">
+      <img src={logo} alt="" className="h-[18px] w-[18px] shrink-0 rounded-full" />
+      <span className="text-[12px] font-medium tracking-[-0.01em]">{symbol}</span>
+      <span
+        className="ml-auto text-[12px] font-medium tabular-nums"
+        style={{ fontFamily: "var(--font-geist-mono), ui-monospace, monospace" }}
+      >
+        {price}
+      </span>
+      <span className="w-[52px] text-right text-[11px] font-medium tabular-nums text-[#6f97ff]">
+        {change}
+      </span>
     </div>
   );
 }
 
 function CardArt({ product }: { product: ProductKey }) {
   if (product === "pontoon") return <PontoonArt />;
-  if (product === "xend") return <XendArt />;
-  return <UltrapropArt />;
+  if (product === "prydd") return <PryddArt />;
+  return <OpenFuturesArt />;
 }
 
 export function ProductCards() {

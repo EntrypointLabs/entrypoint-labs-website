@@ -1,7 +1,7 @@
 # Entrypoint Labs — Website
 
 Marketing site for [Entrypoint Labs](https://entrypointlabs.xyz), the product R&D lab behind
-[Xend](https://xend.global), [Ultraprop](https://ultraprop.xyz),
+[PRYDD](https://prydd.co), [OpenFutures](https://www.openfutures.xyz),
 [Cortex](https://www.usecortexai.xyz) and Pontoon.
 
 ## Stack

@@ -45,32 +45,32 @@ export function Wordmark({ className = "" }: { className?: string }) {
    so all four read at the same optical size in an equal box (~80% coverage) —
    their native viewBoxes have very different ink-to-canvas ratios. */
 
-export function XendMark({ size = 24 }: { size?: number }) {
+/* Ribbon from EntrypointLabs/prydd-website public/prydd/mark.svg. */
+export function PryddMark({ size = 24 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 200 200" fill="none" aria-hidden>
-      <g transform="translate(100 100) scale(0.96)">
-        <path
-          d="M -95 0 C -50 -22 50 -22 95 0 C 50 22 -50 22 -95 0 Z"
-          fill="currentColor"
-          transform="rotate(45)"
-        />
-        <path
-          d="M -95 0 C -50 -22 50 -22 95 0 C 50 22 -50 22 -95 0 Z"
-          fill="currentColor"
-          transform="rotate(-45)"
-        />
+    <svg width={size} height={size} viewBox="0 0 208 214" fill="none" aria-hidden>
+      <g transform="translate(104 107) scale(0.92) translate(-104 -107)">
+        <g transform="translate(24 24)">
+          <g transform="translate(-20 -18)">
+            <path
+              fill="currentColor"
+              d="M 48 40 L 94 40 C 102 40 107 35 113 29 L 119 23 C 123 19 127 18 135 18 L 180 18 L 180 158 C 180 163 177 166 172 166 L 114 166 C 112 166 110 167 108 169 L 94 182 C 92 184 90 184 87 184 L 28 184 C 23 184 20 181 20 176 L 20 91 C 20 85 24 82 30 82 L 58 82 L 58 144 C 58 147 60 149 63 149 L 86 149 C 89 149 91 148 94 145 L 110 129 C 112 127 115 126 119 126 L 143 126 L 143 59 L 133 59 C 125 59 119 65 114 71 C 109 76 104 78 96 78 L 58 78 C 45 78 36 58 36 50 C 36 44 42 40 48 40 Z"
+            />
+          </g>
+        </g>
       </g>
     </svg>
   );
 }
 
-export function UltrapropMark({ size = 24 }: { size?: number }) {
+/* Chamfered square ring from EntrypointLabs/openfutures packages/ui/src/logo/mark.ts. */
+export function OpenFuturesMark({ size = 24 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" aria-hidden>
-      <g transform="translate(50 50) scale(0.8) translate(-50 -50)">
+    <svg width={size} height={size} viewBox="-6 -6 112 112" fill="currentColor" aria-hidden>
+      <g transform="translate(50 50) scale(0.9) translate(-50 -50)">
         <path
-          d="M18 0 L38 0 L50 28 L28 28 L28 50 L0 38 L0 18 L12 12 Z M82 0 L62 0 L50 28 L72 28 L72 50 L100 38 L100 18 L88 12 Z M18 100 L38 100 L50 72 L28 72 L28 50 L0 62 L0 82 L12 88 Z M82 100 L62 100 L50 72 L72 72 L72 50 L100 62 L100 82 L88 88 Z"
-          fill="currentColor"
+          fillRule="evenodd"
+          d="M18.7 0L13 13L0 18.7L0 37L25 48L25 52L0 63L0 81.3L13 87L18.7 100L37 100L48 75L52 75L63 100L81.3 100L87 87L100 81.3L100 63L75 52L75 48L100 37L100 18.7L87 13L81.3 0L63 0L52 25L48 25L37 0ZM28 28L28 72L72 72L72 28Z"
         />
       </g>
     </svg>

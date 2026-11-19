@@ -33,7 +33,7 @@ export default function Page() {
         <LegalLead>&quot;we,&quot;</LegalLead> <LegalLead>&quot;us,&quot;</LegalLead> or{" "}
         <LegalLead>&quot;our&quot;</LegalLead>) handles information in connection with the
         website located at entrypointlabs.xyz (the <LegalLead>&quot;Site&quot;</LegalLead>). It
-        does not apply to the separate products we build — Xend, Ultraprop,
+        does not apply to the separate products we build — PRYDD, OpenFutures,
         Cortex, and Pontoon — each of which maintains its own privacy policy
         on its own site. Because this Site does not offer accounts,
         subscriptions, or purchases, the information described below is
@@ -87,7 +87,7 @@ export default function Page() {
         <LegalLead>5. Third-Party Services.</LegalLead> The Site is hosted
         on Vercel&apos;s infrastructure, which processes server logs and
         analytics data on our behalf as described above. The Site also links
-        to separate product sites (Xend, Ultraprop, Cortex, Pontoon) and to
+        to separate product sites (PRYDD, OpenFutures, Cortex, Pontoon) and to
         third-party platforms such as X and GitHub. Each of those
         destinations has its own privacy practices, which we encourage you
         to review; this Policy does not cover them. Vercel may act as a
