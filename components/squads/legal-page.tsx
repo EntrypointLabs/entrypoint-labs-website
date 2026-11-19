@@ -1,21 +1,9 @@
 import type { ReactNode } from "react";
-import { Inter, Pixelify_Sans } from "next/font/google";
+import { inter, pixelify } from "@/app/fonts";
 
 import { Loader } from "@/components/squads/loader";
 import { Nav } from "@/components/squads/nav";
 import { SiteFooter } from "@/components/squads/site-footer";
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-inter",
-});
-
-const pixelify = Pixelify_Sans({
-  subsets: ["latin"],
-  weight: ["600"],
-  variable: "--font-pixel",
-});
 
 const COLUMN = "mx-auto w-[800px] max-w-full px-6 lg:px-0";
 

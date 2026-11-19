@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Pixelify_Sans } from "next/font/google";
+import { inter, pixelify } from "@/app/fonts";
 
 import { BackedBy } from "@/components/squads/backed-by";
 import { Loader } from "@/components/squads/loader";
@@ -7,27 +7,15 @@ import { Nav } from "@/components/squads/nav";
 import { SiteFooter } from "@/components/squads/site-footer";
 import {
   CortexMark,
+  OpenFuturesMark,
   PontoonMark,
-  UltrapropMark,
-  XendMark,
+  PryddMark,
 } from "@/components/squads/brand";
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-inter",
-});
-
-const pixelify = Pixelify_Sans({
-  subsets: ["latin"],
-  weight: ["600"],
-  variable: "--font-pixel",
-});
 
 export const metadata: Metadata = {
   title: "Company",
   description:
-    "Entrypoint Labs is a product R&D lab building for the onchain economy — the team behind Xend, Ultraprop, Cortex and Pontoon.",
+    "Entrypoint Labs is a product R&D lab building for the onchain economy — the team behind PRYDD, OpenFutures, Cortex and Pontoon.",
   alternates: {
     canonical: "/company",
   },
@@ -53,16 +41,16 @@ const HEADLINE_LINES = ["An R&D lab for", "the onchain economy"];
 
 const PRODUCTS = [
   {
-    name: "Xend",
-    desc: "A checking account for the internet, built for everyday life.",
-    href: "https://xend.global",
-    Mark: XendMark,
+    name: "PRYDD",
+    desc: "One app for everyday global money: hold dollars, send by username.",
+    href: "https://prydd.co",
+    Mark: PryddMark,
   },
   {
-    name: "Ultraprop",
-    desc: "An on-chain prop firm: prove your edge, earn a funded account.",
-    href: "https://ultraprop.xyz",
-    Mark: UltrapropMark,
+    name: "OpenFutures",
+    desc: "Perps across every venue: best fill, or a funded account.",
+    href: "https://www.openfutures.xyz",
+    Mark: OpenFuturesMark,
   },
   {
     name: "Cortex",
@@ -94,7 +82,7 @@ const VALUES = [
 ];
 
 const CLOSING_LINKS = [
-  { label: "Read the litepaper ↗", href: "https://xend.global/litepaper.pdf" },
+  { label: "Read the litepaper ↗", href: "https://prydd.co/litepaper.pdf" },
   { label: "Follow along on X ↗", href: "https://x.com/entrypointlabs" },
 ];
 

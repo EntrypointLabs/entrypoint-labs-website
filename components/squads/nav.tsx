@@ -5,13 +5,13 @@ import { useEffect, useRef, useState } from "react";
 import {
   CortexMark,
   Logomark,
+  OpenFuturesMark,
   PontoonMark,
-  UltrapropMark,
+  PryddMark,
   Wordmark,
-  XendMark,
 } from "./brand";
 
-type ProductIconKind = "xend" | "ultraprop" | "cortex" | "pontoon";
+type ProductIconKind = "prydd" | "openfutures" | "cortex" | "pontoon";
 
 type ProductItem = {
   name: string;
@@ -22,16 +22,16 @@ type ProductItem = {
 
 const PRODUCTS: ProductItem[] = [
   {
-    name: "Xend",
-    desc: "A checking account for the internet.",
-    icon: "xend",
-    href: "https://xend.global",
+    name: "PRYDD",
+    desc: "Hold dollars. Send by username.",
+    icon: "prydd",
+    href: "https://prydd.co",
   },
   {
-    name: "Ultraprop",
-    desc: "An on-chain crypto prop trading firm.",
-    icon: "ultraprop",
-    href: "https://ultraprop.xyz",
+    name: "OpenFutures",
+    desc: "Perps across every venue.",
+    icon: "openfutures",
+    href: "https://www.openfutures.xyz",
   },
   {
     name: "Cortex",
@@ -48,14 +48,14 @@ const PRODUCTS: ProductItem[] = [
 ];
 
 const RESOURCES: { label: string; href: string }[] = [
-  { label: "Docs", href: "https://xend.global/litepaper.pdf" },
+  { label: "Docs", href: "https://prydd.co/litepaper.pdf" },
   { label: "Github", href: "https://github.com/EntrypointLabs" },
   { label: "X", href: "https://x.com/entrypointlabs" },
 ];
 
 function ProductGlyph({ icon, size }: { icon: ProductIconKind; size: number }) {
-  if (icon === "xend") return <XendMark size={size} />;
-  if (icon === "ultraprop") return <UltrapropMark size={size} />;
+  if (icon === "prydd") return <PryddMark size={size} />;
+  if (icon === "openfutures") return <OpenFuturesMark size={size} />;
   if (icon === "cortex") return <CortexMark size={size} />;
   return <PontoonMark size={size} />;
 }
@@ -231,7 +231,7 @@ export function Nav() {
           </NavDropdown>
 
           <a
-            href="https://xend.global/litepaper.pdf"
+            href="https://prydd.co/litepaper.pdf"
             target="_blank"
             rel="noreferrer"
             className="text-[16px] leading-[22.4px] font-medium text-white"
@@ -323,7 +323,7 @@ export function Nav() {
 
           <div className="mt-auto flex flex-col gap-4 pt-8 pb-[120px]">
             <a
-              href="https://xend.global/litepaper.pdf"
+              href="https://prydd.co/litepaper.pdf"
               target="_blank"
               rel="noreferrer"
               onClick={() => setMobileOpen(false)}

@@ -15,8 +15,8 @@ const FOOTER_COLUMNS: FooterColumn[] = [
   {
     title: "Products",
     links: [
-      { label: "Xend", href: "https://xend.global" },
-      { label: "Ultraprop", href: "https://ultraprop.xyz" },
+      { label: "PRYDD", href: "https://prydd.co" },
+      { label: "OpenFutures", href: "https://www.openfutures.xyz" },
       { label: "Cortex", href: "https://www.usecortexai.xyz" },
       { label: "Pontoon", href: "https://pontoon.entrypointlabs.xyz/" },
     ],
@@ -24,7 +24,7 @@ const FOOTER_COLUMNS: FooterColumn[] = [
   {
     title: "Resources",
     links: [
-      { label: "Docs", href: "https://xend.global/litepaper.pdf" },
+      { label: "Docs", href: "https://prydd.co/litepaper.pdf" },
       { label: "Github", href: "https://github.com/EntrypointLabs" },
       { label: "X", href: "https://x.com/entrypointlabs", icon: "x" },
     ],
