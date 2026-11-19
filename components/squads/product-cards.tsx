@@ -135,25 +135,37 @@ function OpenFuturesArt() {
       style={{ fontFamily: "var(--font-geist-sans), Geist, sans-serif" }}
       aria-hidden
     >
-      <div className="absolute inset-x-3 bottom-3 top-[148px] overflow-hidden rounded-[4px] bg-[#0e0e0f]">
-        {/* The hero grid from openfutures.xyz: square cells ruled in #242424. */}
+      {/* --u is one grid cell: the scene width split into --cols squares, so
+          the grid lines and the stepped blue blocks always meet. */}
+      <div className="@container absolute inset-x-3 bottom-3 top-[148px] overflow-hidden rounded-[4px] bg-[#0e0e0f] [--cols:11] lg:[--cols:12] [--rows:9] lg:[--rows:8]">
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 [--u:calc(100cqw/var(--cols))]"
           style={{
             backgroundImage:
               "linear-gradient(#242424 1px, transparent 1px), linear-gradient(90deg, #242424 1px, transparent 1px)",
-            backgroundSize: "29px 29px",
+            backgroundSize: "var(--u) var(--u)",
             backgroundPosition: "-1px -1px",
-            maskImage: "linear-gradient(180deg, #000 55%, rgba(0,0,0,0.35) 100%)",
           }}
         />
-        <div className="absolute -bottom-28 left-1/2 h-48 w-[110%] -translate-x-1/2 rounded-[50%] bg-[#2d63f5]/20 blur-3xl" />
-        <CornerNotch className="left-2 top-2" />
-        <CornerNotch className="right-2 top-2 rotate-90" />
-        <CornerNotch className="bottom-2 left-2 -rotate-90" />
-        {/* The card arrow takes the bottom-right corner. */}
+        {/* The stepped blue edges from the openfutures.xyz hero, snapped to the grid. */}
+        <div
+          className="absolute inset-0 [--u:calc(100cqw/var(--cols))]"
+          style={{
+            background: "linear-gradient(135deg, #3a62e6 0%, #6787f2 55%, #8ea6f7 100%)",
+            clipPath:
+              "polygon(calc(100% - 5 * var(--u)) 0, 100% 0, 100% calc(4 * var(--u)), calc(100% - 1 * var(--u)) calc(4 * var(--u)), calc(100% - 1 * var(--u)) calc(3 * var(--u)), calc(100% - 2 * var(--u)) calc(3 * var(--u)), calc(100% - 2 * var(--u)) calc(1 * var(--u)), calc(100% - 5 * var(--u)) calc(1 * var(--u)))",
+          }}
+        />
+        <div
+          className="absolute inset-0 [--u:calc(100cqw/var(--cols))]"
+          style={{
+            background: "linear-gradient(45deg, #b4c2f9 0%, #8299f5 45%, #5a7cf0 100%)",
+            clipPath:
+              "polygon(0 calc((var(--rows) - 3) * var(--u)), calc(1 * var(--u)) calc((var(--rows) - 3) * var(--u)), calc(1 * var(--u)) calc((var(--rows) - 2) * var(--u)), calc(4 * var(--u)) calc((var(--rows) - 2) * var(--u)), calc(4 * var(--u)) calc((var(--rows) - 1) * var(--u)), calc(7 * var(--u)) calc((var(--rows) - 1) * var(--u)), calc(7 * var(--u)) 100%, 0 100%)",
+          }}
+        />
 
-        <div className="absolute left-[9%] top-[46px] w-[74%] rounded-[4px] border border-[#242424] bg-[#161616] px-3.5 pb-3.5 pt-3 text-[#f5f5f4] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.7)] transition-transform duration-500 ease-[cubic-bezier(.35,0,0,1)] group-hover:-translate-y-1.5">
+        <div className="absolute left-[9%] top-[46px] w-[74%] rounded-[4px] border border-white/[0.08] bg-[#161616]/75 backdrop-blur-md px-3.5 pb-3.5 pt-3 text-[#f5f5f4] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.7)] transition-transform duration-500 ease-[cubic-bezier(.35,0,0,1)] group-hover:-translate-y-1.5">
           <div className="flex items-center justify-between border-b border-[#242424] pb-2.5 text-[10px] leading-none">
             <span className="flex items-center gap-[6px] font-medium">
               <OpenFuturesMark size={12} />
@@ -182,17 +194,6 @@ function OpenFuturesArt() {
         </span>
       </div>
     </div>
-  );
-}
-
-/* The L-shaped "Decor" corner from the openfutures.xyz navbar: two solid
-   bars, one 41% wide and one 38% tall, meeting at a square corner. */
-function CornerNotch({ className }: { className: string }) {
-  return (
-    <span className={`absolute h-3 w-3 ${className}`}>
-      <span className="absolute inset-y-0 left-0 w-[4px] bg-[#f5f5f4]/80" />
-      <span className="absolute inset-x-0 top-0 h-[4px] bg-[#f5f5f4]/80" />
-    </span>
   );
 }
 
