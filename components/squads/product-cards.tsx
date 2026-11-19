@@ -135,17 +135,23 @@ function OpenFuturesArt() {
       style={{ fontFamily: "var(--font-geist-sans), Geist, sans-serif" }}
       aria-hidden
     >
-      <div className="absolute inset-x-3 bottom-3 top-[148px] overflow-hidden rounded-[12px] border border-white/[0.06] bg-[#111112]">
+      <div className="absolute inset-x-3 bottom-3 top-[148px] overflow-hidden rounded-[4px] bg-[#0e0e0f]">
+        {/* The hero grid from openfutures.xyz: square cells ruled in #242424. */}
         <div
-          className="absolute inset-0 opacity-[0.55]"
+          className="absolute inset-0"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px)",
-            backgroundSize: "24px 24px",
-            maskImage: "radial-gradient(ellipse 85% 75% at 50% 45%, #000 30%, transparent 100%)",
+              "linear-gradient(#242424 1px, transparent 1px), linear-gradient(90deg, #242424 1px, transparent 1px)",
+            backgroundSize: "29px 29px",
+            backgroundPosition: "-1px -1px",
+            maskImage: "linear-gradient(180deg, #000 55%, rgba(0,0,0,0.35) 100%)",
           }}
         />
-        <div className="absolute -bottom-24 left-1/2 h-48 w-[120%] -translate-x-1/2 rounded-[50%] bg-[#2d63f5]/25 blur-3xl" />
+        <div className="absolute -bottom-28 left-1/2 h-48 w-[110%] -translate-x-1/2 rounded-[50%] bg-[#2d63f5]/20 blur-3xl" />
+        <CornerNotch className="left-2 top-2" />
+        <CornerNotch className="right-2 top-2 rotate-90" />
+        <CornerNotch className="bottom-2 left-2 -rotate-90" />
+        {/* The card arrow takes the bottom-right corner. */}
 
         <div className="absolute left-[9%] top-[46px] w-[74%] rounded-[4px] border border-[#242424] bg-[#161616] px-3.5 pb-3.5 pt-3 text-[#f5f5f4] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.7)] transition-transform duration-500 ease-[cubic-bezier(.35,0,0,1)] group-hover:-translate-y-1.5">
           <div className="flex items-center justify-between border-b border-[#242424] pb-2.5 text-[10px] leading-none">
@@ -176,6 +182,17 @@ function OpenFuturesArt() {
         </span>
       </div>
     </div>
+  );
+}
+
+/* The L-shaped "Decor" corner from the openfutures.xyz navbar: two solid
+   bars, one 41% wide and one 38% tall, meeting at a square corner. */
+function CornerNotch({ className }: { className: string }) {
+  return (
+    <span className={`absolute h-3 w-3 ${className}`}>
+      <span className="absolute inset-y-0 left-0 w-[4px] bg-[#f5f5f4]/80" />
+      <span className="absolute inset-x-0 top-0 h-[4px] bg-[#f5f5f4]/80" />
+    </span>
   );
 }
 
