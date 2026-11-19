@@ -65,59 +65,60 @@ function PontoonArt() {
   );
 }
 
-/* Account window from prydd-website components/prydd/story-sections.tsx (AccountScene):
-   white 16px panel, hairline #eee, balance scale, black Send pill, @maya activity row. */
+/* PRYDD's own visual language (prydd-website, docs/prydd-design-direction.md):
+   a soft landscape scene holding a layered white account panel, restrained
+   shadows, 16px radii, hairline #eee rules and muted #727272 labels. The
+   account window mirrors AccountScene; the @maya pill mirrors usernamePill. */
+const PRYDD_PANEL_SHADOW =
+  "shadow-[0_0_0_1px_rgba(0,0,0,0.04),0_8px_16px_-4px_rgba(0,0,0,0.05),0_3px_6px_-1.5px_rgba(0,0,0,0.04)]";
+
 function PryddArt() {
   return (
-    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
-      <div className="absolute left-7 right-7 top-[148px] rounded-[16px] border border-black/[0.06] bg-white text-black shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
-        <div className="flex items-center justify-between gap-3 border-b border-[#eee] px-4 py-2.5 text-[11px] leading-none">
-          <span className="flex items-center gap-[7px] font-medium">
-            <PryddMark size={15} />
-            Your account
-          </span>
-          <span className="text-[#727272]">USD</span>
-        </div>
-        <div className="px-4 pt-3">
-          <span className="block text-[11px] leading-[1.3] tracking-[-0.015em] text-[#727272]">
+    <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
+      <div className="absolute inset-x-3 bottom-3 top-[148px] overflow-hidden rounded-[12px] bg-[#d4e1ed]">
+        <img
+          src="/products/prydd-sky.webp"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover object-[50%_70%]"
+        />
+
+        <div
+          className={`absolute left-[9%] top-[46px] w-[74%] rounded-[16px] bg-white px-[18px] pb-4 pt-[15px] text-black transition-transform duration-500 ease-[cubic-bezier(.35,0,0,1)] group-hover:-translate-y-1.5 ${PRYDD_PANEL_SHADOW}`}
+        >
+          <div className="flex items-center justify-between border-b border-[#eee] pb-3 text-[10px] leading-none">
+            <span className="flex items-center gap-[6px] font-medium">
+              <PryddMark size={13} />
+              Your account
+            </span>
+            <span className="text-[#727272]">USD</span>
+          </div>
+          <span className="mt-4 block text-[10px] leading-[1.3] tracking-[-0.015em] text-[#727272]">
             Dollar balance
           </span>
-          <strong className="mt-1.5 block text-[36px] font-medium leading-[1.1] tracking-[-0.045em]">
+          <strong className="mt-1 block text-[34px] font-medium leading-[1.1] tracking-[-0.045em]">
             $250<span className="text-[0.76em]">.00</span>
           </strong>
-          <div className="mt-3 flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f5f5f5] px-2.5 py-[7px] text-[11px] leading-none">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden>
+          <div className="mt-4 flex items-center gap-1.5 text-[9.5px] leading-none">
+            <span className="inline-flex items-center gap-1 rounded-full bg-[#f5f5f5] px-2.5 py-[7px]">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden>
                 <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
               </svg>
               Add money
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-black px-2.5 py-[7px] text-[11px] leading-none text-white">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <span className="inline-flex items-center gap-1 rounded-full bg-black px-2.5 py-[7px] text-white">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden>
                 <path d="M7 17 17 7M8 7h9v9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               Send
             </span>
           </div>
         </div>
-        <div className="mt-3 flex items-center justify-between px-4 text-[11px]">
-          <strong className="font-medium">Activity</strong>
-          <span className="text-[10px] text-[#727272]">Today</span>
-        </div>
-        <div className="mx-4 mt-2 flex items-center gap-2 border-t border-[#eee] py-3">
-          <img
-            src="/products/prydd-maya.png"
-            alt=""
-            className="h-8 w-8 shrink-0 rounded-full object-cover"
-          />
-          <div className="min-w-0">
-            <strong className="block text-[12px] font-medium leading-none tracking-[-0.015em]">
-              To @maya
-            </strong>
-            <span className="mt-1 block text-[10px] leading-[1.3] text-[#727272]">Sent · Today</span>
-          </div>
-          <b className="ml-auto text-[12px] font-medium tracking-[-0.025em]">−$25.00</b>
-        </div>
+
+        <span className="absolute right-[6%] top-[22px] inline-flex items-center gap-[7px] rounded-full bg-white py-[5px] pl-[5px] pr-3 text-[11px] tracking-[-0.02em] text-black shadow-[0_1px_2px_rgba(0,0,0,0.07)] transition-transform duration-500 ease-[cubic-bezier(.35,0,0,1)] group-hover:-translate-y-0.5">
+          <img src="/products/prydd-maya.png" alt="" className="h-[22px] w-[22px] rounded-full object-cover" />
+          @maya
+          <span className="text-[#727272]">−$25</span>
+        </span>
       </div>
     </div>
   );
@@ -206,11 +207,11 @@ export function ProductCards() {
             key={key}
             href={href}
             {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-            className="relative block h-[420px] w-full cursor-pointer overflow-hidden rounded-[18px] bg-[#0E0E0F] lg:h-[400px] lg:w-[377px]"
+            className="group relative block h-[420px] w-full cursor-pointer overflow-hidden rounded-[18px] bg-[#0E0E0F] lg:h-[400px] lg:w-[377px]"
           >
             <CardHeader name={name} desc={desc} product={key} />
             <CardArt product={key} />
-            <ArrowLink className="z-20" />
+            <ArrowLink className={key === "prydd" ? "z-20 !bottom-7 !right-8 !text-black/70" : "z-20"} />
           </a>
         );
       })}
