@@ -124,40 +124,56 @@ function PryddArt() {
   );
 }
 
-/* Order ticket from the OpenFutures marketing terminal (screen-terminal.webp)
-   and apps/trading markets.ts. Buy / Long uses the --long token, #2d63f5. */
+/* Same geometry as PryddArt (framed scene, panel at 9% / 46px, pill at 6% / 22px)
+   in OpenFutures' terminal language: #161616 surfaces, #242424 hairlines, 4px
+   radii, Geist Mono prices and the --long token #2d63f5. Markets and venue come
+   from apps/trading markets.ts and screen-terminal.webp. */
 function OpenFuturesArt() {
   return (
-    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
-      <div
-        className="absolute left-6 right-6 top-[168px] rounded-[4px] border border-[#242424] bg-[#161616] p-3.5 text-[#f5f5f4]"
-        style={{ fontFamily: "var(--font-geist-sans), Geist, sans-serif" }}
-      >
-        <MarketRow
-          logo="/logos/openfutures-btc.svg"
-          symbol="BTC-PERP"
-          price="86,346.4"
-          change="+3.64%"
+    <div
+      className="pointer-events-none absolute inset-0 z-0"
+      style={{ fontFamily: "var(--font-geist-sans), Geist, sans-serif" }}
+      aria-hidden
+    >
+      <div className="absolute inset-x-3 bottom-3 top-[148px] overflow-hidden rounded-[12px] border border-white/[0.06] bg-[#111112]">
+        <div
+          className="absolute inset-0 opacity-[0.55]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+            maskImage: "radial-gradient(ellipse 85% 75% at 50% 45%, #000 30%, transparent 100%)",
+          }}
         />
-        <MarketRow
-          logo="/logos/openfutures-nvda.svg"
-          symbol="NVDA"
-          price="182.40"
-          change="+1.84%"
-        />
-        <div className="mt-3 flex items-center gap-2 text-[11px] leading-none text-[#969694]">
-          <span>Venue</span>
-          <span className="text-[#f5f5f4]">Lighter</span>
-          <span className="ml-auto font-medium text-[#6f97ff]">Best</span>
+        <div className="absolute -bottom-24 left-1/2 h-48 w-[120%] -translate-x-1/2 rounded-[50%] bg-[#2d63f5]/25 blur-3xl" />
+
+        <div className="absolute left-[9%] top-[46px] w-[74%] rounded-[4px] border border-[#242424] bg-[#161616] px-3.5 pb-3.5 pt-3 text-[#f5f5f4] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.7)] transition-transform duration-500 ease-[cubic-bezier(.35,0,0,1)] group-hover:-translate-y-1.5">
+          <div className="flex items-center justify-between border-b border-[#242424] pb-2.5 text-[10px] leading-none">
+            <span className="flex items-center gap-[6px] font-medium">
+              <OpenFuturesMark size={12} />
+              Order ticket
+            </span>
+            <span className="text-[#969694]">Perps</span>
+          </div>
+          <div className="pt-1.5">
+            <MarketRow logo="/logos/openfutures-btc.svg" symbol="BTC-PERP" price="86,346.4" change="+3.64%" />
+            <MarketRow logo="/logos/openfutures-nvda.svg" symbol="NVDA" price="182.40" change="+1.84%" />
+          </div>
+          <div className="mt-2.5 grid grid-cols-2 gap-1 rounded-[4px] border border-[#242424] bg-[#1b1b1b] p-1">
+            <span className="flex h-[30px] items-center justify-center rounded-[3px] bg-[#2d63f5] text-[11px] font-semibold text-white">
+              Buy / Long
+            </span>
+            <span className="flex h-[30px] items-center justify-center rounded-[3px] text-[11px] font-semibold text-[#969694]">
+              Sell / Short
+            </span>
+          </div>
         </div>
-        <div className="mt-3 grid grid-cols-2 gap-1 rounded-[4px] border border-[#242424] bg-[#1b1b1b] p-1">
-          <span className="flex h-[36px] items-center justify-center rounded-[4px] bg-[#2d63f5] text-[12px] font-semibold text-white">
-            Buy / Long
-          </span>
-          <span className="flex h-[36px] items-center justify-center rounded-[4px] text-[12px] font-semibold text-[#969694]">
-            Sell / Short
-          </span>
-        </div>
+
+        <span className="absolute right-[6%] top-[22px] inline-flex items-center gap-[7px] rounded-full border border-[#242424] bg-[#1b1b1b] py-[6px] pl-2.5 pr-3 text-[11px] tracking-[-0.01em] text-[#f5f5f4] shadow-[0_4px_12px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-[cubic-bezier(.35,0,0,1)] group-hover:-translate-y-0.5">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#6f97ff] shadow-[0_0_6px_#6f97ff]" />
+          Lighter
+          <span className="font-medium text-[#6f97ff]">Best fill</span>
+        </span>
       </div>
     </div>
   );
@@ -176,15 +192,15 @@ function MarketRow({
 }) {
   return (
     <div className="flex items-center gap-2 py-1.5">
-      <img src={logo} alt="" className="h-[18px] w-[18px] shrink-0 rounded-full" />
-      <span className="text-[12px] font-medium tracking-[-0.01em]">{symbol}</span>
+      <img src={logo} alt="" className="h-4 w-4 shrink-0 rounded-full" />
+      <span className="whitespace-nowrap text-[11.5px] font-medium tracking-[-0.01em]">{symbol}</span>
       <span
-        className="ml-auto text-[12px] font-medium tabular-nums"
+        className="ml-auto whitespace-nowrap text-[11.5px] font-medium tabular-nums"
         style={{ fontFamily: "var(--font-geist-mono), ui-monospace, monospace" }}
       >
         {price}
       </span>
-      <span className="w-[52px] text-right text-[11px] font-medium tabular-nums text-[#6f97ff]">
+      <span className="w-[46px] shrink-0 text-right text-[10.5px] font-medium tabular-nums text-[#6f97ff]">
         {change}
       </span>
     </div>
@@ -211,7 +227,15 @@ export function ProductCards() {
           >
             <CardHeader name={name} desc={desc} product={key} />
             <CardArt product={key} />
-            <ArrowLink className={key === "prydd" ? "z-20 !bottom-7 !right-8 !text-black/70" : "z-20"} />
+            <ArrowLink
+              className={
+                key === "prydd"
+                  ? "z-20 !bottom-7 !right-8 !text-black/70"
+                  : key === "openfutures"
+                    ? "z-20 !bottom-7 !right-8"
+                    : "z-20"
+              }
+            />
           </a>
         );
       })}
