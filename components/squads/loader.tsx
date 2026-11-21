@@ -19,10 +19,10 @@ export function LoaderScreen({
   return (
     <div
       className={`fixed inset-0 z-[100] flex items-center justify-center ${className}`}
-      style={{ backgroundColor: "#FCFCFE", ...style }}
+      style={{ backgroundColor: "#ffffff", ...style }}
       aria-hidden
     >
-      <Logomark size={50} className="sq-loader-mark text-[#1E1E1E]" />
+      <Logomark size={50} className="sq-loader-mark text-[#0a0a0a]" />
       <style>{`
         .sq-loader-mark {
           animation: sq-loader-spin 1.8s infinite;

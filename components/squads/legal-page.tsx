@@ -1,14 +1,15 @@
 import type { ReactNode } from "react";
-import { inter, pixelify } from "@/app/fonts";
 
 import { Loader } from "@/components/squads/loader";
 import { Nav } from "@/components/squads/nav";
 import { SiteFooter } from "@/components/squads/site-footer";
 
-const COLUMN = "mx-auto w-[800px] max-w-full px-6 lg:px-0";
+const COLUMN = "mx-auto w-full max-w-[720px] px-4 lg:px-6";
 
 export function LegalSection({ children }: { children: ReactNode }) {
-  return <p className="text-[20px] leading-[28px] text-black/60">{children}</p>;
+  return (
+    <p className="text-[17px] leading-[1.7] text-[#0a0a0a]/78">{children}</p>
+  );
 }
 
 export function LegalLead({ children }: { children: ReactNode }) {
@@ -25,29 +26,22 @@ export function LegalPage({
   children: ReactNode;
 }) {
   return (
-    <div
-      className={`${inter.variable} ${pixelify.variable} relative min-h-screen overflow-x-clip bg-[#FCFCFE]`}
-      style={{ fontFamily: "var(--font-inter)" }}
-    >
+    <div className="relative min-h-screen overflow-x-clip bg-white">
       <Loader />
       <Nav />
-      <main>
-        <div className="pt-[120px] lg:pt-[140px]">
-          <h1 className="px-6 text-center font-medium tracking-[-1.5px] text-[40px] leading-[44px] text-black lg:px-0 lg:tracking-[-2px] lg:text-[56px] lg:leading-[61.6px]">
-            {title}
-          </h1>
-          <p className="mt-5 text-center text-[20px] leading-[28px] text-black/60">
+      <main id="content">
+        <div className={`${COLUMN} pt-32 lg:pt-40`}>
+          <p className="ep-eyebrow">Legal</p>
+          <h1 className="ep-h2 mt-4 text-[40px] sm:text-[48px]">{title}</h1>
+          <p className="mt-4 text-[14px] font-medium text-[#0a0a0a]/60">
             Last Updated: {lastUpdated}
           </p>
-          <div className={`${COLUMN} mt-16 space-y-7 pb-[160px]`}>
+          <div className="mt-12 space-y-7 border-t border-[#d5d9e2] pt-10 pb-24">
             {children}
           </div>
         </div>
       </main>
-      {/* SiteFooter is transparent and relies on a dark backdrop from the page. */}
-      <div className="bg-[var(--sq-canvas)]">
-        <SiteFooter />
-      </div>
+      <SiteFooter />
     </div>
   );
 }

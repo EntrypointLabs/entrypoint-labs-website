@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import {
+  ArrowRight,
   CortexMark,
   Logomark,
   OpenFuturesMark,
@@ -53,6 +54,8 @@ const RESOURCES: { label: string; href: string }[] = [
   { label: "X", href: "https://x.com/entrypointlabs" },
 ];
 
+const LITEPAPER = "https://prydd.co/litepaper.pdf";
+
 function ProductGlyph({ icon, size }: { icon: ProductIconKind; size: number }) {
   if (icon === "prydd") return <PryddMark size={size} />;
   if (icon === "openfutures") return <OpenFuturesMark size={size} />;
@@ -71,7 +74,7 @@ function ChevronIcon({ open }: { open: boolean }) {
       className={`transition-transform duration-150 ${open ? "-rotate-180" : ""}`}
     >
       <path
-        d="M1 1L4.5 4.5L8 1"
+        d="M1 1.2 4.5 4.8 8 1.2"
         stroke="currentColor"
         strokeWidth={1.4}
         strokeLinecap="round"
@@ -81,17 +84,36 @@ function ChevronIcon({ open }: { open: boolean }) {
   );
 }
 
-function CloseIcon() {
+function MenuIcon() {
   return (
-    <svg width={20} height={20} viewBox="0 0 20 20" fill="none" aria-hidden>
+    <svg width={16} height={16} viewBox="0 0 16 16" fill="none" aria-hidden>
       <path
-        d="M4 4L16 16M16 4L4 16"
+        d="M2.5 4.5h11M2.5 8h11M2.5 11.5h11"
         stroke="currentColor"
-        strokeWidth={1.6}
+        strokeWidth={1.4}
         strokeLinecap="round"
       />
     </svg>
   );
+}
+
+function CloseIcon() {
+  return (
+    <svg width={16} height={16} viewBox="0 0 16 16" fill="none" aria-hidden>
+      <path
+        d="M3.5 3.5 12.5 12.5M12.5 3.5 3.5 12.5"
+        stroke="currentColor"
+        strokeWidth={1.4}
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function externalProps(href: string) {
+  return href.startsWith("http")
+    ? { target: "_blank" as const, rel: "noreferrer" }
+    : {};
 }
 
 function NavDropdown({
@@ -121,32 +143,34 @@ function NavDropdown({
   };
 
   const handleLeave = () => {
-    closeTimer.current = setTimeout(() => setOpen(false), 150);
+    closeTimer.current = setTimeout(() => setOpen(false), 140);
   };
 
   return (
-    // Wrapper spans the full 80px bar so the panel anchors to the header's
-    // bottom edge (overlapping it by 5px) instead of hanging off the trigger row.
     <div
-      className="relative flex h-20 items-center"
+      className="relative flex h-16 items-center"
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
+      onFocus={handleEnter}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node)) {
+          handleLeave();
+        }
+      }}
     >
       <button
         type="button"
         aria-expanded={open}
-        className={`flex items-center gap-1.5 text-[16px] leading-[22.4px] font-medium text-white transition-colors duration-150 ${
-          open ? "" : "hover:text-white/70"
-        }`}
+        className="flex items-center gap-1 rounded-full px-3 py-1.5 text-[13px] font-medium text-[#0a0a0a] transition-colors duration-150 hover:bg-[#f6f5f3]"
       >
         {label}
         <ChevronIcon open={open} />
       </button>
       <div
-        className={`absolute top-full -mt-[5px] origin-top rounded-[14px] border border-white/5 bg-[#161618] shadow-[0_20px_44px_-12px_rgba(0,0,0,0.55)] transition-all duration-150 ease-out ${
+        className={`absolute top-[calc(100%-6px)] origin-top rounded-[14px] border border-[#d5d9e2] bg-white p-2 shadow-[0_18px_50px_-28px_rgba(10,10,10,0.45)] transition duration-150 ease-out ${
           open
-            ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
-            : "pointer-events-none translate-y-1 scale-95 opacity-0"
+            ? "pointer-events-auto translate-y-0 opacity-100"
+            : "pointer-events-none -translate-y-1 opacity-0"
         } ${panelClassName ?? ""}`}
       >
         {children}
@@ -162,181 +186,184 @@ export function Nav() {
     if (!mobileOpen) return;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKey);
     };
   }, [mobileOpen]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 text-white">
-      <div className="hidden h-20 w-full items-center bg-[var(--sq-nav-bg)] backdrop-blur-[12px] lg:flex">
-        <a href="/" className="flex items-center gap-2.5 pl-[110px]">
-          <Logomark size={24} />
-          <Wordmark className="text-[15px]" />
+    <header className="fixed inset-x-0 top-0 z-50">
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 border-b border-[#d5d9e2]/80 bg-white/85"
+        style={{ backdropFilter: "blur(12px)" }}
+        aria-hidden
+      />
+      <div className="ep-wrap flex h-16 items-center justify-between gap-4">
+        <a href="/" className="flex items-center gap-2.5 text-[#0a0a0a]">
+          <Logomark size={22} />
+          <Wordmark className="hidden text-[13px] sm:inline" />
         </a>
 
-        <nav className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-12">
-          {/* -left-[22px] + p-3 panel + px-2.5 rows = icon column flush with trigger text */}
-          <NavDropdown
-            label="Products"
-            panelClassName="-left-[22px] w-[246px] p-3"
-          >
+        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center lg:flex">
+          <NavDropdown label="Products" panelClassName="left-0 w-[280px]">
+            <p className="px-2.5 pb-1 pt-1.5 text-[10px] font-medium uppercase tracking-[0.14em] text-[#0a0a0a]/55">
+              Products
+            </p>
             <div className="flex flex-col">
-              {PRODUCTS.map((product) => {
-                const isExternal = product.href.startsWith("http");
-                return (
-                  <a
-                    key={product.name}
-                    href={product.href}
-                    {...(isExternal
-                      ? { target: "_blank", rel: "noreferrer" }
-                      : {})}
-                    className="group flex items-start gap-3 rounded-[8px] px-2.5 py-2 transition-colors duration-150 hover:bg-white/5"
-                  >
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center text-white/40 transition-colors duration-150 group-hover:text-white">
-                      <ProductGlyph icon={product.icon} size={20} />
-                    </span>
-                    <span className="flex flex-col">
-                      <span className="text-[16px] font-medium text-white">
-                        {product.name}
-                      </span>
-                      <span className="mt-1 text-[13px] leading-[18px] text-white/50">
-                        {product.desc}
-                      </span>
-                    </span>
-                  </a>
-                );
-              })}
-            </div>
-          </NavDropdown>
-
-          <NavDropdown
-            label="Resources"
-            panelClassName="-left-[20px] w-[125px] overflow-hidden"
-          >
-            <div className="flex flex-col">
-              {RESOURCES.map((item) => (
+              {PRODUCTS.map((product) => (
                 <a
-                  key={item.label}
-                  href={item.href}
-                  {...(item.href.startsWith("http")
-                    ? { target: "_blank", rel: "noreferrer" }
-                    : {})}
-                  className="flex h-[39px] items-center px-5 text-[15px] text-white/70 transition-colors duration-150 hover:bg-white/5 hover:text-white"
+                  key={product.name}
+                  href={product.href}
+                  {...externalProps(product.href)}
+                  className="group flex items-start gap-3 rounded-[10px] px-2.5 py-2 transition-colors duration-150 hover:bg-[#f6f5f3]"
                 >
-                  {item.label}
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center text-[#0a0a0a]">
+                    <ProductGlyph icon={product.icon} size={18} />
+                  </span>
+                  <span className="flex flex-col">
+                    <span className="text-[14px] font-medium tracking-[-0.011em] text-[#0a0a0a]">
+                      {product.name}
+                    </span>
+                    <span className="mt-0.5 text-[13px] leading-[18px] text-[#0a0a0a]/60">
+                      {product.desc}
+                    </span>
+                  </span>
                 </a>
               ))}
             </div>
           </NavDropdown>
 
-          <a
-            href="https://prydd.co/litepaper.pdf"
-            target="_blank"
-            rel="noreferrer"
-            className="text-[16px] leading-[22.4px] font-medium text-white"
-          >
-            Protocol
-          </a>
+          <NavDropdown label="Resources" panelClassName="left-0 w-[180px]">
+            <p className="px-2.5 pb-1 pt-1.5 text-[10px] font-medium uppercase tracking-[0.14em] text-[#0a0a0a]/55">
+              Resources
+            </p>
+            {RESOURCES.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                {...externalProps(item.href)}
+                className="flex h-9 items-center rounded-[10px] px-2.5 text-[14px] font-medium text-[#0a0a0a] transition-colors duration-150 hover:bg-[#f6f5f3]"
+              >
+                {item.label}
+              </a>
+            ))}
+          </NavDropdown>
+
           <a
             href="/company"
-            className="text-[16px] leading-[22.4px] font-medium text-white"
+            className="rounded-full px-3 py-1.5 text-[13px] font-medium text-[#0a0a0a] transition-colors duration-150 hover:bg-[#f6f5f3]"
           >
             Company
           </a>
         </nav>
-      </div>
 
-      <div className="flex h-16 w-full items-center justify-between bg-[var(--sq-nav-bg)] px-6 backdrop-blur-[12px] lg:hidden">
-        <a href="/" className="flex items-center">
-          <Logomark size={24} />
-        </a>
-        <button
-          type="button"
-          aria-label="Open menu"
-          onClick={() => setMobileOpen(true)}
-          className="flex h-[14px] w-[18px] flex-col justify-between"
-        >
-          <span className="block h-[2px] w-full bg-white" />
-          <span className="block h-[2px] w-full bg-white" />
-          <span className="block h-[2px] w-full bg-white" />
-        </button>
+        <div className="flex items-center gap-2">
+          <a
+            href={LITEPAPER}
+            target="_blank"
+            rel="noreferrer"
+            className="ep-btn ep-btn-primary hidden sm:inline-flex"
+          >
+            Protocol
+            <ArrowRight size={14} />
+          </a>
+          <button
+            type="button"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen((open) => !open)}
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f2f1ef] text-[#0a0a0a] lg:hidden"
+          >
+            {mobileOpen ? <CloseIcon /> : <MenuIcon />}
+          </button>
+        </div>
       </div>
 
       {mobileOpen && (
-        <div className="fixed inset-0 z-50 flex flex-col overflow-y-auto bg-[#0E0E0F] px-6 lg:hidden">
-          <div className="flex h-16 shrink-0 items-center justify-between">
-            <Logomark size={24} />
+        <div className="fixed inset-0 z-50 flex flex-col overflow-y-auto bg-white lg:hidden">
+          <div className="ep-wrap flex h-16 shrink-0 items-center justify-between">
+            <a href="/" className="text-[#0a0a0a]" onClick={() => setMobileOpen(false)}>
+              <Logomark size={22} />
+            </a>
             <button
               type="button"
               aria-label="Close menu"
               onClick={() => setMobileOpen(false)}
-              className="text-white"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f2f1ef] text-[#0a0a0a]"
             >
               <CloseIcon />
             </button>
           </div>
 
-          <div className="mt-6 flex flex-col">
-            <p className="text-[14px] text-white/40">Products</p>
-            <div className="mt-4 flex flex-col">
-              {PRODUCTS.map((product) => {
-                const isExternal = product.href.startsWith("http");
-                return (
-                  <a
-                    key={product.name}
-                    href={product.href}
-                    onClick={() => setMobileOpen(false)}
-                    {...(isExternal
-                      ? { target: "_blank", rel: "noreferrer" }
-                      : {})}
-                    className="flex h-11 items-center justify-between text-[24px] font-medium text-white"
-                  >
-                    {product.name}
-                    <span className="flex items-center text-white">
-                      <ProductGlyph icon={product.icon} size={24} />
-                    </span>
-                  </a>
-                );
-              })}
+          <div className="ep-wrap pb-16 pt-6">
+            <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-[#0a0a0a]/55">
+              Products
+            </p>
+            <div className="mt-3 flex flex-col">
+              {PRODUCTS.map((product) => (
+                <a
+                  key={product.name}
+                  href={product.href}
+                  {...externalProps(product.href)}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center justify-between border-b border-[#d5d9e2] py-4 text-[22px] font-medium tracking-[-0.02em] text-[#0a0a0a]"
+                >
+                  {product.name}
+                  <span className="text-[#0a0a0a]">
+                    <ProductGlyph icon={product.icon} size={22} />
+                  </span>
+                </a>
+              ))}
             </div>
-          </div>
 
-          <div className="mt-8 flex flex-col">
-            <p className="text-[14px] text-white/40">Resources</p>
-            <div className="mt-4 flex flex-col">
+            <p className="mt-8 text-[10px] font-medium uppercase tracking-[0.14em] text-[#0a0a0a]/55">
+              Resources
+            </p>
+            <div className="mt-3 flex flex-col">
               {RESOURCES.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
+                  {...externalProps(item.href)}
                   onClick={() => setMobileOpen(false)}
-                  {...(item.href.startsWith("http")
-                    ? { target: "_blank", rel: "noreferrer" }
-                    : {})}
-                  className="flex h-11 items-center text-[24px] font-medium text-white"
+                  className="flex items-center border-b border-[#d5d9e2] py-4 text-[22px] font-medium tracking-[-0.02em] text-[#0a0a0a]"
                 >
                   {item.label}
                 </a>
               ))}
             </div>
-          </div>
 
-          <div className="mt-auto flex flex-col gap-4 pt-8 pb-[120px]">
+            <div className="mt-8 flex flex-col gap-3">
+              <a
+                href="/company"
+                onClick={() => setMobileOpen(false)}
+                className="text-[16px] font-medium text-[#0a0a0a]"
+              >
+                Company
+              </a>
+              <a
+                href="/careers"
+                onClick={() => setMobileOpen(false)}
+                className="text-[16px] font-medium text-[#0a0a0a]"
+              >
+                Careers
+              </a>
+            </div>
+
             <a
-              href="https://prydd.co/litepaper.pdf"
+              href={LITEPAPER}
               target="_blank"
               rel="noreferrer"
               onClick={() => setMobileOpen(false)}
-              className="text-[16px] font-medium text-white"
+              className="ep-btn ep-btn-primary mt-10"
             >
               Protocol
-            </a>
-            <a
-              href="/company"
-              onClick={() => setMobileOpen(false)}
-              className="text-[16px] font-medium text-white"
-            >
-              Company
+              <ArrowRight size={14} />
             </a>
           </div>
         </div>

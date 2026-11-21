@@ -45,8 +45,6 @@ const FOOTER_COLUMNS: FooterColumn[] = [
   },
 ];
 
-const COLUMN_X = [467, 657, 848, 1038];
-
 function FooterLink({ label, href = "#", icon }: FooterLinkItem) {
   const isExternal = href.startsWith("http");
   return (
@@ -55,21 +53,20 @@ function FooterLink({ label, href = "#", icon }: FooterLinkItem) {
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noreferrer" : undefined}
       aria-label={icon === "x" ? "X (Twitter)" : undefined}
-      className="inline-flex w-fit items-center whitespace-nowrap text-base leading-[22.4px] text-white/50 transition-colors duration-150 hover:text-white"
+      className="inline-flex w-fit items-center text-[14px] leading-5 text-[#0a0a0a] transition-opacity duration-150 hover:opacity-60"
     >
-      {icon === "x" ? <XLogo size={16} /> : label}
+      {icon === "x" ? <XLogo size={14} /> : label}
     </a>
   );
 }
 
-function LegalText({ className = "" }: { className?: string }) {
+function LegalText() {
   return (
     <>
-      <p className="text-xs leading-4 text-white/35">All rights reserved.</p>
-      <p className={`text-xs leading-4 text-white/35 ${className}`}>
-        Entrypoint Labs is a software company.
-        <br />
-        It is not a bank and does not custody customer funds.
+      <p className="text-[12px] leading-4 text-[#0a0a0a]/60">All rights reserved.</p>
+      <p className="text-[12px] leading-[18px] text-[#0a0a0a]/60">
+        Entrypoint Labs is a software company. It is not a bank and does not
+        custody customer funds.
       </p>
     </>
   );
@@ -77,25 +74,25 @@ function LegalText({ className = "" }: { className?: string }) {
 
 export function SiteFooter() {
   return (
-    <footer className="relative mt-[195px] border-t border-white/[0.08] text-white">
-      <div className="relative mx-auto w-[1150px] max-w-full lg:h-[313px]">
-        {/* Desktop */}
-        <div className="hidden lg:block">
-          <div className="absolute left-0 top-[56px] flex items-center gap-3">
-            <Logomark size={28} />
-            <Wordmark className="text-lg" />
+    <footer className="border-t border-[#d5d9e2] text-[#0a0a0a]">
+      <div className="ep-wrap grid gap-12 py-12 lg:grid-cols-[240px_1fr] lg:gap-16 lg:py-16">
+        <div className="flex flex-col gap-5 lg:border-r lg:border-[#d5d9e2] lg:pr-10">
+          <a href="/" className="flex items-center gap-2.5 text-[#0a0a0a]">
+            <Logomark size={22} />
+            <Wordmark className="text-[13px]" />
+          </a>
+          <div className="flex max-w-[240px] flex-col gap-3">
+            <LegalText />
           </div>
+        </div>
 
-          {FOOTER_COLUMNS.map((column, i) => (
-            <div
-              key={column.title}
-              className="absolute top-[56px]"
-              style={{ left: COLUMN_X[i] }}
-            >
-              <h4 className="text-base font-medium text-white">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4">
+          {FOOTER_COLUMNS.map((column) => (
+            <div key={column.title}>
+              <h2 className="text-[14px] font-medium text-[#0a0a0a]">
                 {column.title}
-              </h4>
-              <div className="mt-4 flex flex-col gap-[14px]">
+              </h2>
+              <div className="mt-4 flex flex-col gap-3">
                 {column.links.map((link) => (
                   <FooterLink
                     key={link.label}
@@ -107,43 +104,6 @@ export function SiteFooter() {
               </div>
             </div>
           ))}
-
-          <div className="absolute bottom-[56px] left-0 flex w-fit flex-col gap-[22px]">
-            <LegalText />
-          </div>
-        </div>
-
-        {/* Mobile */}
-        <div className="px-6 py-12 lg:hidden">
-          <div className="grid grid-cols-2 gap-x-6 gap-y-10">
-            {FOOTER_COLUMNS.map((column) => (
-              <div key={column.title}>
-                <h4 className="text-base font-medium text-white">
-                  {column.title}
-                </h4>
-                <div className="mt-4 flex flex-col gap-[14px]">
-                  {column.links.map((link) => (
-                    <FooterLink
-                      key={link.label}
-                      label={link.label}
-                      href={link.href}
-                      icon={link.icon}
-                    />
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 flex flex-col gap-6">
-            <div className="flex items-center gap-3">
-              <Logomark size={28} />
-              <Wordmark className="text-lg" />
-            </div>
-            <div className="flex flex-col gap-[14px]">
-              <LegalText />
-            </div>
-          </div>
         </div>
       </div>
     </footer>
