@@ -4,6 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/next";
 import { Suspense } from "react";
+import { inter } from "@/app/fonts";
 import { LoaderScreen } from "@/components/squads/loader";
 import "./globals.css";
 
@@ -13,7 +14,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#111113",
+  themeColor: "#ffffff",
 };
 
 export const metadata: Metadata = {
@@ -197,7 +198,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" style={{ colorScheme: "light" }}>
       <head>
         <script
           type="application/ld+json"
@@ -205,7 +206,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}
+        className={`${GeistSans.variable} ${GeistMono.variable} ${inter.variable} antialiased`}
       >
         <Suspense fallback={<LoaderScreen />}>{children}</Suspense>
         <Analytics />

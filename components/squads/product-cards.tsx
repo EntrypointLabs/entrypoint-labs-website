@@ -1,89 +1,69 @@
-import { ArrowLink, OpenFuturesMark, PontoonMark, PryddMark } from "./brand";
+import { ArrowRight, CortexMark, OpenFuturesMark, PontoonMark, PryddMark } from "./brand";
 
-type ProductKey = "pontoon" | "prydd" | "openfutures";
+type ProductKey = "prydd" | "openfutures" | "cortex" | "pontoon";
+type Tone = "light" | "dark" | "warm";
 
-const PRODUCTS: { key: ProductKey; name: string; desc: string; href: string }[] = [
-  {
-    key: "pontoon",
-    name: "Pontoon",
-    desc: "A local TON blockchain sandbox with a desktop inspection GUI.",
-    href: "https://pontoon.entrypointlabs.xyz/",
-  },
+const PRODUCTS: {
+  key: ProductKey;
+  name: string;
+  desc: string;
+  href: string;
+  tone: Tone;
+}[] = [
   {
     key: "prydd",
     name: "PRYDD",
     desc: "One app for everyday global money — hold dollars, send by username.",
     href: "https://prydd.co",
+    tone: "light",
   },
   {
     key: "openfutures",
     name: "OpenFutures",
     desc: "Perps across every venue — best fill, or a funded account.",
     href: "https://www.openfutures.xyz",
+    tone: "dark",
+  },
+  {
+    key: "cortex",
+    name: "Cortex",
+    desc: "A sovereign, encrypted memory layer for AI.",
+    href: "https://www.usecortexai.xyz",
+    tone: "dark",
+  },
+  {
+    key: "pontoon",
+    name: "Pontoon",
+    desc: "A local TON blockchain sandbox with a desktop inspection GUI.",
+    href: "https://pontoon.entrypointlabs.xyz/",
+    tone: "warm",
   },
 ];
 
-function CardGlyph({ product }: { product: ProductKey }) {
-  if (product === "pontoon") return <PontoonMark />;
-  if (product === "prydd") return <PryddMark />;
-  return <OpenFuturesMark />;
+function CardMark({ product }: { product: ProductKey }) {
+  if (product === "pontoon") return <PontoonMark size={16} />;
+  if (product === "prydd") return <PryddMark size={16} />;
+  if (product === "cortex") return <CortexMark size={16} />;
+  return <OpenFuturesMark size={16} />;
 }
 
-function CardHeader({ name, desc, product }: { name: string; desc: string; product: ProductKey }) {
-  return (
-    <div className="relative z-10 px-10 pt-8">
-      <div className="flex items-start justify-between">
-        <h3 className="text-2xl font-medium leading-[26.4px] text-white">{name}</h3>
-        <span className="flex h-[24px] items-center text-white">
-          <CardGlyph product={product} />
-        </span>
-      </div>
-      <p className="mt-3 text-base leading-[22.4px] text-white/55">{desc}</p>
-    </div>
-  );
-}
-
-function PontoonArt() {
-  return (
-    <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
-      <div className="absolute left-[-6px] top-[147px] w-[330px]">
-        <div className="relative rounded-t-[12px] bg-[#1b1b1d] p-[5px] shadow-[0_30px_60px_-20px_rgba(0,0,0,0.65)]">
-          <span className="absolute left-1/2 top-[3px] h-[4px] w-[28px] -translate-x-1/2 rounded-full bg-black/60" />
-          <div className="relative h-[198px] overflow-hidden rounded-[7px]">
-            <img
-              src="/products/pontoon-app.png"
-              alt=""
-              className="h-full w-full object-cover"
-            />
-          </div>
-        </div>
-        <div className="relative mx-auto h-[9px] w-[112%] rounded-b-[3px] bg-gradient-to-b from-[#3a3a3d] to-[#222224]">
-          <span className="absolute left-1/2 top-0 h-[3px] w-[40px] -translate-x-1/2 rounded-b-[3px] bg-black/40" />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* PRYDD's own visual language (prydd-website, docs/prydd-design-direction.md):
-   a soft landscape scene holding a layered white account panel, restrained
-   shadows, 16px radii, hairline #eee rules and muted #727272 labels. The
-   account window mirrors AccountScene; the @maya pill mirrors usernamePill. */
+/* PRYDD's own visual language: a soft landscape holding a layered white
+   account panel, restrained shadows, 16px radii, hairline rules. */
 const PRYDD_PANEL_SHADOW =
-  "shadow-[0_0_0_1px_rgba(0,0,0,0.04),0_8px_16px_-4px_rgba(0,0,0,0.05),0_3px_6px_-1.5px_rgba(0,0,0,0.04)]";
+  "shadow-[0_0_0_1px_rgba(0,0,0,0.04),0_12px_28px_-12px_rgba(0,0,0,0.18),0_3px_6px_-1.5px_rgba(0,0,0,0.04)]";
 
 function PryddArt() {
   return (
     <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
-      <div className="absolute inset-x-3 bottom-3 top-[148px] overflow-hidden rounded-[12px] bg-[#d4e1ed]">
+      <div className="absolute inset-0 overflow-hidden bg-[#d4e1ed]">
         <img
           src="/products/prydd-sky.webp"
           alt=""
-          className="absolute inset-0 h-full w-full object-cover object-[50%_70%]"
+          className="absolute inset-0 h-full w-full object-cover object-[50%_62%]"
         />
 
         <div
-          className={`absolute left-[9%] top-[46px] w-[74%] rounded-[16px] bg-white px-[18px] pb-4 pt-[15px] text-black transition-transform duration-500 ease-[cubic-bezier(.35,0,0,1)] group-hover:-translate-y-1.5 ${PRYDD_PANEL_SHADOW}`}
+          className={`absolute left-[8%] top-[16%] w-[76%] rounded-[16px] bg-white px-[18px] pb-4 pt-[15px] text-black transition-transform duration-500 ease-[cubic-bezier(.35,0,0,1)] motion-safe:group-hover:-translate-y-1.5 ${PRYDD_PANEL_SHADOW}`}
         >
           <div className="flex items-center justify-between border-b border-[#eee] pb-3 text-[10px] leading-none">
             <span className="flex items-center gap-[6px] font-medium">
@@ -114,7 +94,7 @@ function PryddArt() {
           </div>
         </div>
 
-        <span className="absolute right-[6%] top-[22px] inline-flex items-center gap-[7px] rounded-full bg-white py-[5px] pl-[5px] pr-3 text-[11px] tracking-[-0.02em] text-black shadow-[0_1px_2px_rgba(0,0,0,0.07)] transition-transform duration-500 ease-[cubic-bezier(.35,0,0,1)] group-hover:-translate-y-0.5">
+        <span className="absolute right-[7%] top-[7%] inline-flex items-center gap-[7px] rounded-full bg-white py-[5px] pl-[5px] pr-3 text-[11px] tracking-[-0.02em] text-black shadow-[0_1px_2px_rgba(0,0,0,0.07)] transition-transform duration-500 ease-[cubic-bezier(.35,0,0,1)] motion-safe:group-hover:-translate-y-0.5">
           <img src="/products/prydd-maya.png" alt="" className="h-[22px] w-[22px] rounded-full object-cover" />
           @maya
           <span className="text-[#727272]">−$25</span>
@@ -124,10 +104,8 @@ function PryddArt() {
   );
 }
 
-/* Same geometry as PryddArt (framed scene, panel at 9% / 46px, pill at 6% / 22px)
-   in OpenFutures' terminal language: #161616 surfaces, #242424 hairlines, 4px
-   radii, Geist Mono prices and the --long token #2d63f5. Markets and venue come
-   from apps/trading markets.ts and screen-terminal.webp. */
+/* OpenFutures terminal language: #161616 surfaces, #242424 hairlines, 4px
+   radii, Geist Mono prices, and the stepped blue edges from the product hero. */
 function OpenFuturesArt() {
   return (
     <div
@@ -135,9 +113,7 @@ function OpenFuturesArt() {
       style={{ fontFamily: "var(--font-geist-sans), Geist, sans-serif" }}
       aria-hidden
     >
-      {/* --u is one grid cell: the scene width split into --cols squares, so
-          the grid lines and the stepped blue blocks always meet. */}
-      <div className="@container absolute inset-x-3 bottom-3 top-[148px] overflow-hidden rounded-[4px] bg-[#0e0e0f] [--cols:11] lg:[--cols:12] [--rows:9] lg:[--rows:8]">
+      <div className="@container absolute inset-0 overflow-hidden bg-[#0e0e0f] [--cols:11] lg:[--cols:12] [--rows:9] lg:[--rows:8]">
         <div
           className="absolute inset-0 [--u:calc(100cqw/var(--cols))]"
           style={{
@@ -147,7 +123,6 @@ function OpenFuturesArt() {
             backgroundPosition: "-1px -1px",
           }}
         />
-        {/* The stepped blue edges from the openfutures.xyz hero, snapped to the grid. */}
         <div
           className="absolute inset-0 [--u:calc(100cqw/var(--cols))]"
           style={{
@@ -161,11 +136,11 @@ function OpenFuturesArt() {
           style={{
             background: "linear-gradient(45deg, #b4c2f9 0%, #8299f5 45%, #5a7cf0 100%)",
             clipPath:
-              "polygon(0 calc((var(--rows) - 3) * var(--u)), calc(1 * var(--u)) calc((var(--rows) - 3) * var(--u)), calc(1 * var(--u)) calc((var(--rows) - 2) * var(--u)), calc(4 * var(--u)) calc((var(--rows) - 2) * var(--u)), calc(4 * var(--u)) calc((var(--rows) - 1) * var(--u)), calc(7 * var(--u)) calc((var(--rows) - 1) * var(--u)), calc(7 * var(--u)) 100%, 0 100%)",
+              "polygon(0 calc((var(--rows) - 4) * var(--u)), calc(1 * var(--u)) calc((var(--rows) - 4) * var(--u)), calc(1 * var(--u)) calc((var(--rows) - 3) * var(--u)), calc(4 * var(--u)) calc((var(--rows) - 3) * var(--u)), calc(4 * var(--u)) calc((var(--rows) - 2) * var(--u)), calc(7 * var(--u)) calc((var(--rows) - 2) * var(--u)), calc(7 * var(--u)) calc(100% - 108px), 0 calc(100% - 108px))",
           }}
         />
 
-        <div className="absolute left-[9%] top-[46px] w-[74%] rounded-[4px] border border-white/[0.08] bg-[#161616]/75 backdrop-blur-md px-3.5 pb-3.5 pt-3 text-[#f5f5f4] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.7)] transition-transform duration-500 ease-[cubic-bezier(.35,0,0,1)] group-hover:-translate-y-1.5">
+        <div className="absolute left-[8%] top-[15%] w-[76%] rounded-[4px] border border-white/[0.08] bg-[#161616]/80 px-3.5 pb-3.5 pt-3 text-[#f5f5f4] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.7)] backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(.35,0,0,1)] motion-safe:group-hover:-translate-y-1.5">
           <div className="flex items-center justify-between border-b border-[#242424] pb-2.5 text-[10px] leading-none">
             <span className="flex items-center gap-[6px] font-medium">
               <OpenFuturesMark size={12} />
@@ -187,7 +162,7 @@ function OpenFuturesArt() {
           </div>
         </div>
 
-        <span className="absolute right-[6%] top-[22px] inline-flex items-center gap-[7px] rounded-full border border-[#242424] bg-[#1b1b1b] py-[6px] pl-2.5 pr-3 text-[11px] tracking-[-0.01em] text-[#f5f5f4] shadow-[0_4px_12px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-[cubic-bezier(.35,0,0,1)] group-hover:-translate-y-0.5">
+        <span className="absolute right-[7%] top-[6%] inline-flex items-center gap-[7px] rounded-full border border-[#242424] bg-[#1b1b1b] py-[6px] pl-2.5 pr-3 text-[11px] tracking-[-0.01em] text-[#f5f5f4] shadow-[0_4px_12px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-[cubic-bezier(.35,0,0,1)] motion-safe:group-hover:-translate-y-0.5">
           <span className="h-1.5 w-1.5 rounded-full bg-[#6f97ff] shadow-[0_0_6px_#6f97ff]" />
           Lighter
           <span className="font-medium text-[#6f97ff]">Best fill</span>
@@ -225,35 +200,78 @@ function MarketRow({
   );
 }
 
-function CardArt({ product }: { product: ProductKey }) {
-  if (product === "pontoon") return <PontoonArt />;
-  if (product === "prydd") return <PryddArt />;
-  return <OpenFuturesArt />;
+function CortexArt() {
+  return (
+    <div className="pointer-events-none absolute inset-0 z-0 bg-[#07070a]" aria-hidden>
+      <img
+        src="/products/cortex-app.png"
+        alt=""
+        className="h-full w-full object-cover object-center transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.03]"
+      />
+    </div>
+  );
 }
+
+function PontoonArt() {
+  return (
+    <div className="pointer-events-none absolute inset-0 z-0 bg-[#f6f5f3]" aria-hidden>
+      <div className="absolute inset-x-5 top-5 bottom-[108px] overflow-hidden rounded-[12px] bg-[#141416] shadow-[0_16px_40px_-24px_rgba(10,10,10,0.55)] ring-1 ring-black/10 transition-transform duration-500 ease-[cubic-bezier(.35,0,0,1)] motion-safe:group-hover:-translate-y-1">
+        <img
+          src="/products/pontoon-app.png"
+          alt=""
+          className="h-full w-full object-cover object-left-top"
+        />
+      </div>
+    </div>
+  );
+}
+
+function CardArt({ product }: { product: ProductKey }) {
+  if (product === "prydd") return <PryddArt />;
+  if (product === "openfutures") return <OpenFuturesArt />;
+  if (product === "cortex") return <CortexArt />;
+  return <PontoonArt />;
+}
+
+const TONE_SCRIM: Record<Tone, string> = {
+  light: "bg-gradient-to-t from-white from-25% via-white/90 to-transparent",
+  warm: "bg-gradient-to-t from-[#f6f5f3] from-25% via-[#f6f5f3]/95 to-transparent",
+  dark: "bg-gradient-to-t from-[#0c0c0e] from-30% via-[#0c0c0e]/92 to-transparent",
+};
 
 export function ProductCards() {
   return (
-    <section className="mx-auto mt-12 flex w-full max-w-[1150px] flex-col gap-3 px-6 lg:mt-16 lg:w-[1150px] lg:max-w-full lg:flex-row lg:gap-[9.5px] lg:px-0">
-      {PRODUCTS.map(({ key, name, desc, href }) => {
+    <section className="ep-wrap mt-12 grid grid-cols-1 gap-3 sm:mt-16 lg:grid-cols-2">
+      {PRODUCTS.map(({ key, name, desc, href, tone }, index) => {
         const external = href.startsWith("http");
+        const ink = tone === "dark" ? "text-white" : "text-[#0a0a0a]";
+        const muted = tone === "dark" ? "text-white/70" : "text-[#0a0a0a]/65";
         return (
           <a
             key={key}
             href={href}
             {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-            className="group relative block h-[420px] w-full cursor-pointer overflow-hidden rounded-[18px] bg-[#0E0E0F] lg:h-[400px] lg:w-[377px]"
+            className="ep-card ep-in group relative flex h-[420px] cursor-pointer flex-col overflow-hidden rounded-[22px] ring-1 ring-black/[0.06]"
+            style={{ animationDelay: `${120 + index * 70}ms` }}
           >
-            <CardHeader name={name} desc={desc} product={key} />
             <CardArt product={key} />
-            <ArrowLink
-              className={
-                key === "prydd"
-                  ? "z-20 !bottom-7 !right-8 !text-black/70"
-                  : key === "openfutures"
-                    ? "z-20 !bottom-7 !right-8"
-                    : "z-20"
-              }
-            />
+            <div className={`pointer-events-none absolute inset-x-0 bottom-0 h-40 ${TONE_SCRIM[tone]}`} />
+            <div className={`relative z-10 mt-auto px-5 pb-5 pt-10 ${ink}`}>
+              <div className="flex items-center justify-between gap-4">
+                <span className="flex min-w-0 items-center gap-2 text-[15px] font-medium tracking-[-0.015em]">
+                  <CardMark product={key} />
+                  {name}
+                </span>
+                <span className="inline-flex shrink-0 items-center gap-1 text-[14px] font-medium">
+                  Explore
+                  <ArrowRight
+                    size={14}
+                    className="transition-transform duration-200 motion-safe:group-hover:translate-x-0.5"
+                  />
+                </span>
+              </div>
+              <p className={`mt-1.5 max-w-[36rem] text-[13px] leading-5 ${muted}`}>{desc}</p>
+            </div>
           </a>
         );
       })}

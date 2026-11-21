@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { inter } from "@/app/fonts";
 
-import { Logomark, Wordmark } from "@/components/squads/brand";
+import { ArrowRight } from "@/components/squads/brand";
 import { Loader } from "@/components/squads/loader";
+import { Nav } from "@/components/squads/nav";
+import { SiteFooter } from "@/components/squads/site-footer";
 
 export const metadata: Metadata = {
   title: "Careers",
@@ -14,29 +15,26 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div
-      className={`${inter.variable} flex min-h-screen flex-col items-center justify-center bg-[#FCFCFE] text-[#111113]`}
-      style={{ fontFamily: "var(--font-inter)" }}
-    >
+    <div className="flex min-h-screen flex-col">
       <Loader />
-      <div className="flex flex-col items-center text-center">
-        <div className="flex items-center gap-3 text-[#111113]">
-          <Logomark size={28} />
-          <Wordmark className="text-lg" />
-        </div>
-        <h1 className="mt-12 text-[40px] font-[500] tracking-tight text-[#111113]">
+      <Nav />
+      <main
+        id="content"
+        className="ep-wrap flex flex-1 flex-col items-center justify-center py-36 text-center"
+      >
+        <p className="ep-eyebrow">Careers</p>
+        <h1 className="ep-display mt-4 max-w-[16ch] text-[40px] sm:text-[52px]">
           No open roles right now.
         </h1>
-        <p className="mt-4 max-w-md text-base leading-6 text-[#111113]/55">
+        <p className="mt-5 max-w-md text-[17px] leading-7 text-[#0a0a0a]/70">
           We&apos;re a small lab. When that changes, you&apos;ll see it here first.
         </p>
-        <a
-          href="/"
-          className="mt-10 text-sm text-[#111113]/55 transition-opacity hover:opacity-70"
-        >
-          ← Back home
+        <a href="/" className="ep-btn ep-btn-secondary mt-8">
+          <ArrowRight size={14} className="rotate-180" />
+          Back home
         </a>
-      </div>
+      </main>
+      <SiteFooter />
     </div>
   );
 }

@@ -145,6 +145,33 @@ export function ArrowIcon({
   );
 }
 
+export function ArrowRight({
+  size = 16,
+  className = "",
+}: {
+  size?: number;
+  className?: string;
+}) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden
+      className={className}
+    >
+      <path
+        d="M3 8h10M9.5 4.5 13 8l-3.5 3.5"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function ArrowLink({ className = "" }: { className?: string }) {
   return (
     <span
